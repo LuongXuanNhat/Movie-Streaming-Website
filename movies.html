@@ -24,6 +24,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="webStyle.css">
   
+  <!-- fontawesome  6.0.0 -->
+  <link href="./fontawesome-free-6.4.0-web/css/all.min.css" rel="stylesheet">
+  <!-- JS -->
+  <link href="./js/script.js" rel="stylesheet">
 
 <!------------------------Scroll to top button------------------------------------------------>
 <style>
@@ -68,8 +72,8 @@
 }
 
     .logo {
-  width: 110px;
-  height: 90px;
+  width: 140px;
+  height: 46px;
   padding: 3px;
   margin: 0;
   padding: 0;
@@ -198,6 +202,23 @@ font-size:18px;
 #waterdrop canvas {
   bottom: -70px !important;
 }
+.layout_navbar__1COmD {
+  
+    -webkit-transition: background-color .3s linear;
+    transition: background-color .3s linear
+}
+
+.layout_navbar__1COmD.layout_hasBg__1CDaI {
+    background-color: rgba(51,10,103,.93)
+}
+#header-nav {
+  z-index: 30;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  transition: background-color 0.5s;
+}
 #header-nav .nav-link {
   color: white;
   font-size: 20px;
@@ -233,6 +254,18 @@ font-size:18px;
     justify-content: center;
   }
 }
+@media only screen and (max-width: 990px) {
+  #header-nav {
+  z-index: 30;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #06121e99;
+  transition: background-color 0.5s;
+}
+}
+
 @media only screen and (min-width: 993px) and (max-width: 1034px) {
   #header-nav .nav-link {
     color: white;
@@ -260,7 +293,18 @@ font-size:18px;
   margin: 50px 20px;
 }
 </style>    
+<script>
+  window.addEventListener('scroll', function() {
+  var myDiv = document.getElementById('header-nav');
+  var scrollPosition = window.scrollY;
 
+  if (scrollPosition > 0) {
+    myDiv.classList.add('layout_hasBg__1CDaI');
+  } else {
+    myDiv.classList.remove('layout_hasBg__1CDaI');
+  }
+});
+</script>
 
 </head>
 
@@ -270,9 +314,9 @@ font-size:18px;
     <div class="scroll-bar">
     <!-- navbar starts -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark" id="header-nav">
+    <nav class="navbar navbar-expand-lg navbar-light layout_navbar__1COmD" id="header-nav">
       <div class="container-fluid">
-        <a class="navbar-brand" href="home.html"><img class="logo" src="Images/TheaterLogoFinal.png" alt="" width="30"
+        <a class="navbar-brand" href="home.html"><img class="logo" src="./Design/LogoWebRedBlack-02.png" alt="" width="30"
             height="24"></a>
         <button id="nav" class="navbar-toggler" id="nav" style="background-color:#8b0000" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -280,49 +324,46 @@ font-size:18px;
         </button>
         
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 font_1em">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+              <a class="nav-link " href="movies.html" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Phim ngắn</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="movies.html">Movies</a>
+              <a class="nav-link " href="web-series.html" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'" >Phim dài tập</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="web-series.html">Web Series</a>
+              <a class="nav-link" href="kids.html" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Anime</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="kids.html">Kids</a>
+              <a class="nav-link" href="tv.html"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">TV</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="tv.html">TV</a>
+              <a class="nav-link" href="premium.html"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Gói vip</a>
             </li>
+      
             <li class="nav-item">
-              <a class="nav-link" href="premium.html">Premium</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link" href="contactus.html">Contact Us</a>
+              <a class="nav-link" href="contactus.html"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Liên hệ</a>
             </li>
             <li>
               <!-- Genre dropdown starts-->
               <div>
-                <div class="dropdown" style="position: relative; display: inline-block; padding-top: 5px; padding-left: 15px;">
-                    <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton" style="font-size:20px;">
-                        Genres
+                <div class="dropdown" style="position: relative; disPlay: inline-block; padding-top: 5px; padding-left: 15px;">
+                    <button class="btn text-white"  type="button" id="dropdownMenuButton" style="font-size:16px;margin-bottom: 6px;">
+                        Genres <i class="fa-solid fa-chevron-down"></i>
                     </button>
                     <div class="dropdown-content" style="color: white;">
-                        <a href="popular.html">Popular</a>
-                        <a href="crime.html">Crime</a>
-                        <a href="suspense.html">Suspense & Thriller</a>
-                        <a href="action.html">Action</a>
-                        <a href="fantasy.html">Sci-Fi & Fantasy</a>
-                        <a href="documentary.html">Documentary</a>
-                        <a href="horror.html">Horror</a>
-                        <a href="drama.html">Drama</a>
-                        <a href="war.html">War & Politics</a>
-                        <a href="comedy.html">Comedy</a>
-                        <a href="romance.html">Romance</a>
-                        <a href="anime.html">Anime</a>
+                        <a href="popular.html">Hành động</a>
+                        <a href="crime.html">Chiến tranh</a>
+                        <a href="suspense.html">Gia đình</a>
+                        <a href="action.html">Giật gân</a>
+                        <a href="fantasy.html">Tình cảm</a>
+                        <a href="documentary.html">Hoạt hình</a>
+                        <a href="horror.html">Kinh dị</a>
+                        <a href="drama.html">Lịch sử</a>
+                        <a href="war.html">Khoa học viễn tưởng</a>
+                        <a href="comedy.html">Phim dài tập</a>
+                        <a href="romance.html">Phim ngắn tập</a>
+                        <a href="anime.html">Phim tâm lý</a>
                       </div>
                 </div>
               </div>
@@ -330,11 +371,11 @@ font-size:18px;
             </li>
             <div style="position: relative; display: inline-block; padding-top: 5px; padding-left: 15px;">
               <li>
-                <button  type="button" class="btn btn-light" onclick="logout()">Logout</button>
+                <button  type="button" class="btn font-mulish btn-light" onclick="login()"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Đăng nhập</button>
               </li>
             </div>
           </ul>
-          <form id="searchForm" class="d-flex">
+          <form id="searchForm" class="d-flex" style=" justify-content: center;">
             <input class="form-control me-2" type="text" id="searchText" placeholder="Search" aria-label="Search">
             <button class="btn btn-danger" type="submit">Search</button>
           </form>
@@ -344,7 +385,7 @@ font-size:18px;
 
         <!-- navbar ends -->
 
-    <div class="main-content">
+    <div class="main-content" style=" margin-top: 74px;" >
 
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">

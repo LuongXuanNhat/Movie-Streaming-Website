@@ -52,8 +52,8 @@
 						</svg><span class="error">Password should be atleast 6 characters long,contain a special character,a lower case and upper case alphabet and a number.</span></p>`;
         } else {
           swal({
-            title: "Welcome back!",
-            text:  "Let the binge watch begin!!",
+            title: "Chào mừng trở lại!",
+            text:  "Phim hay vãi đã cập nhập rất nhiều phim hay!!",
             type: "success",
           });
           setTimeout(function () {
@@ -402,8 +402,8 @@ box-shadow: 0 6px 10px 0px gray;
         position: relative;
         top: 30px;
         left: 10px;
-        width: 110px;
-        height: 90px;
+        width: 180px;
+        height: 70px;
         padding: 3px;
         margin: 0;
         padding: 0;
@@ -458,7 +458,7 @@ color: white;
   <body>
     <div class="logo">
         <a href="home.html">
-            <img src="Images/TheaterLogoFinal.png" class="img-logo"/>
+            <img src="Design/LogoWebRedBlack-02.png" class="img-logo"/>
         </a>
     </div>
     <div class="login-div">
@@ -467,7 +467,7 @@ color: white;
       autocomplete="off">
 
 
-      <h1 class="sign">Sign In</h1>
+      <h1 class="sign">Đăng nhập</h1>
       <div id="errormessage"></div>
       <span class="seperator"></span>
 
@@ -487,14 +487,14 @@ color: white;
           id = "pass_signup"
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="Mật khẩu"
           oninput="change()"
         /><i class="fa fa-fw fa-eye field-icon toggle-password" id="togglePassword"></i>
 
       </div>
 
         <span class="seperator"></span>
-        <input class="signin-button" type="submit" value="Sign In" />
+        <input class="signin-button" type="submit" value="Đăng nhập" />
         <div class="remember-flex">
         <div> 
               <div class="or">OR</div>
@@ -508,12 +508,12 @@ color: white;
         <div class="login-face">
         <br>
         <div class="new-members">
-            New to Apna Theatre? <a href="signup.html" class="signup-link">Sign up now</a>.
+            Bạn chưa có tài khoản <a href="signup.html" class="signup-link">Đăng ký ngay</a>.
         </div>
         <br>
         <div class="protection color_link help">
-            This page is protected by Google reCAPTCHA to ensure you're not a bot.
-           <div class="learnmore"> <a href="#">Learn more.</a></div>
+          Trang này được Google reCAPTCHA bảo vệ để đảm bảo bạn không phải là bot.
+           <div class="learnmore"> <a href="#">Xem thêm</a></div>
         </div>
       </div>
       </form>
@@ -522,43 +522,6 @@ color: white;
 
 
 
-    <div class="bottom">
-        <div class="bottom-width">
-          <div class ="questions">
-          <span>Questions? <br>Ask on : <a href="mailto: Apna_theatre@gmail.com" class="tel-link">Apna_theatre@gmail.com</a></span>   
-            <select class="fa select-language">
-              <option> &#xf0ac; &nbsp;&nbsp;&nbsp;English</option>
-              <option> &#xf0ac; &nbsp;&nbsp;&nbsp;Hindi</option>
-          </select>
-          </div>
-            
-            <div>
-                <ul class="bottom-flex">
-                    <li class="list-bottom">
-                        <a href="faq.html" class="link-bottom">
-                            FAQ
-                        </a>
-                    </li>
-                    <li class="list-bottom">
-                        <a href="#" class="link-bottom">
-                            Help Center
-                        </a>
-                    </li>
-                    <li class="list-bottom">
-                        <a href="#" class="link-bottom">
-                            Terms of Use
-                        </a>
-                    </li>
-                    <li class="list-bottom">
-                        <a href="#" class="link-bottom">
-                            Privacy
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-    </div>
       <button  id="scrollToTopButton" title="Go to top" class="ml-5" >
       <i class="fa fa-angle-double-up" aria-hidden="true" style="font-weight: bolder;"></i>
     </button>
@@ -594,7 +557,7 @@ color: white;
       
       function onSignIn(googleUser) {
    
-            document.location.href = 'https://qazimaazarshad.github.io/Movie-Streaming-Website/home.html'
+            document.location.href = 'http://127.0.0.1:5500/home.html'
       
     }
       
