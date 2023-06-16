@@ -851,8 +851,36 @@ background-color: #2c2f30;
                   </div>
                 </div>
 
-              
+                <ul id="data-list"></ul>
 
+                <script>
+                  // Gửi yêu cầu HTTP đến endpoint API trên backend
+                  fetch('http://localhost:8080/API/phims')
+                      .then(response => response.json())
+                      .then(data => {
+                          // Xử lý dữ liệu và hiển thị trên giao diện
+                          const dataList = document.getElementById('data-list');
+                          data.forEach(item => {
+                              const listItem = document.createElement('li');
+              
+                              // Tạo phần tử cho tên phim
+                              const nameElement = document.createElement('h2');
+                              nameElement.textContent = item.tenphim;
+                              listItem.appendChild(nameElement);
+              
+                              // Tạo phần tử cho hình ảnh : "http://localhost:8080/path/to/image/directory/"
+                              const imageElement = document.createElement('img');
+                              const url = 'http://localhost:8080/path/to/image/directory/' + item.hinhanh;
+                              imageElement.src = url ;
+                              listItem.appendChild(imageElement);
+              
+                              dataList.appendChild(listItem);
+                          });
+                      })
+                      .catch(error => {
+                          console.error('Lỗi khi lấy dữ liệu:', error);
+                      });
+              </script>
 
 
 

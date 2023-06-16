@@ -42,13 +42,13 @@
   }
   #scrollToTopButton {
     position: fixed;
-    bottom: 40px;
-    right: 25px;
+    bottom: 15px;
+    right: 15px;
     font-size: 25px;
     z-index: 99;
-    width: 50px;
-    height: 50px;
-    background-color: red;
+    width: 35px;
+    height: 35px;
+    background-color: #7b1cff;
     color: black;
     border: none;
     cursor: pointer;
@@ -398,7 +398,7 @@
         </div>
       </div>
     </div>
-    <label class="online  title-nav">Phim mới phát hành! Xem ngay</label>
+    <label class="online  title-nav">Phim sắp khởi chiếu!</label>
     
 
 
@@ -501,17 +501,12 @@
                   <img src="./Images/inception.jpg" alt="Avatar" style="width:250px;height:360px;">
               </div>
               <div class="flip-card-back_i">
+                <!-- Tên phim -->
                 <h1>Inception</h1>
-                  <button class="btn_i b3_i"  title="Year" style="color:white">2010</button>
-                  <button class="btn_i b2_i"  title="Minutes" style="color:white">2h42m<button>
-                  <button class="btn_i b1_i"  title="IMDb" style="color:white">8.8</button>
-                </span>
-                <br />
-                <br />
-              </p>
-
-                <p class="para_i">Cobb steals information from his targets by entering their dreams. Saito offers to wipe clean Cobb's criminal history as payment for performing an inception on his sick competitor's son.</p>
-
+                  <p>Thời lượng: 2h</p>
+                <!-- Mô tả -->
+                <p class="para_i">Kiểm tra lại cấu hình đường dẫn ảnh: Xác minh lại cấu hình đường dẫn ảnh trong mã backend của bạn. Đảm bảo rằng đường dẫn được cấu hình đúng và trùng khớp với đường dẫn mà bạn sử dụng trong mã font-end.</p>
+                <br/>
                   <!--<form action="https://youtu.be/YoHD9XEInc0&t=17s"> -->
                       
                       <button class="trailer_i" type="submit" value="" onclick="openWin()">▶Trailer</button>
@@ -3176,7 +3171,7 @@
 
         function scrollFunction() {
           if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            scrollTopButton.style.display = "block";
+            scrollTopButton.style.display = "flex";
           } else {
             scrollTopButton.style.display = "none";
           }
