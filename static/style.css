@@ -10,6 +10,17 @@
   font-size: 1em;
 }
 
+.font-Oswald {
+  font-family: Oswald,sans-serif;
+}
+
+.title-nav {
+  color: #b1a21e;
+  font-family: Oswald,sans-serif;
+  font-size: 1.5em;
+  text-shadow: 1px 0px 1px #ffd800;
+  text-transform: uppercase;
+}
 
 
 
@@ -116,7 +127,6 @@ marquee {
   margin-top: 74px;
   color: red;
   font-size: 25px;
-  font-family: Arial;
   background: transparent;
 }
 .logo {
@@ -128,12 +138,10 @@ marquee {
 }
 
 .online {
-  color: red;
-  font-size: 27px;
-  padding: 10px 25px;
+  font-size: 24px;
+  padding: 20px 25px;
   text-align: center;
   display: block;
-  background: black;
 }
 
 .buddy {
@@ -239,7 +247,7 @@ img:hover {
 }
 
 .maincontainer h2 {
-  color: red;
+  color: #00a17c;;
   text-align: center;
 }
 .foot {
@@ -642,8 +650,8 @@ textarea.ng-valid {
   padding: 10px 20px;
 }
 .footer-logo {
-  width: 150px;
-  height: 120px;
+  width: 154px;
+  height: 56px;
   padding: 3px;
   margin: 0px 0px 0px 10px;
   padding: 0;
@@ -684,14 +692,14 @@ textarea.ng-valid {
   color: white;
 }
 .footer-middle-list-item a:hover {
-  color: red;
+  color: rgb(134, 39, 39);
 }
 .footer-right {
   margin-top: -15px;
 }
 .footer-contact-button {
   font-size: 20px;
-  background-color: red;
+  background-color: rgb(255, 255, 255);
   color: black;
   padding: 10px;
   border: none;
@@ -813,9 +821,8 @@ textarea.ng-valid {
 
 .title_filters__2FjQh {
   margin-top: 80px;
-  padding: 0 40px;
+  padding: 15px 40px;
   background-color: rgba(14,39,64,.45);
-  margin-bottom: 2em;
   border-radius: 5px
 }
 .control {
