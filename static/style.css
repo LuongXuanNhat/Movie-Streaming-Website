@@ -807,7 +807,9 @@ textarea.ng-valid {
 
 
 /* CODE THÊM */
-
+.css-select {
+  max-width: 200px;
+}
 
 .title_filters__2FjQh {
   margin-top: 80px;
