@@ -2,7 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Ubuntu", sans-serif;
+  font-family: BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+
 
 }
 
@@ -133,7 +134,7 @@ marquee {
   width: 140px;
   height: 46px;
   padding: 3px;
-  margin: 0;
+  margin-left: 19px;
   padding: 0;
 }
 

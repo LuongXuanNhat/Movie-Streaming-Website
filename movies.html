@@ -7,14 +7,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ApnaTheatre | Web Series</title>
+  <title>PHV | Phim ngắn</title>
+  <link rel="shortcut icon" href="./Design/Netflix_icon.svg.png" type="image/x-icon">
+
 
   <!-- Font  -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
 
-  <link rel="shortcut icon" href="./Images/Logo/Title.jpeg" type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
@@ -75,7 +76,8 @@
   width: 140px;
   height: 46px;
   padding: 3px;
-  margin: 0;
+  margin: 0 ;
+  margin-left: 31px;
   padding: 0;
 }
 .fas:hover{background: none!important ;}
@@ -101,8 +103,8 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 10px 20px;
 }
 .footer-logo{
-  width: 150px;
-  height: 120px;
+  width: 140px;
+  height: 46px;
   padding: 3px;
   margin:0px 0px 0px 10px;
   padding: 0;
@@ -219,15 +221,20 @@ font-size:18px;
   left: 0;
   transition: background-color 0.5s;
 }
+.row  .col {
+  justify-content: center;
+  display: flex;
+  margin-bottom: 24px;
+  padding-left: 0;
+}
 #header-nav .nav-link {
   color: white;
-  font-size: 20px;
   margin-left: 20px;
 }
     @media only screen and (max-width: 1400px){
   #header-nav .nav-link {
     color: white;
-    font-size: 18px;
+    font-size: 16px;
     margin-left: 18px;
   }
 }
@@ -263,7 +270,7 @@ font-size:18px;
   left: 0;
   background-color: #06121e99;
   transition: background-color 0.5s;
-}
+  }
 }
 
 @media only screen and (min-width: 993px) and (max-width: 1034px) {
@@ -308,7 +315,7 @@ font-size:18px;
 
 </head>
 
-<body style="background-color:black;" color="height:auto;">
+<body style="background-color: #06121E;" color="height:auto;">
 
 
     <div class="scroll-bar">
@@ -316,7 +323,7 @@ font-size:18px;
 
     <nav class="navbar navbar-expand-lg navbar-light layout_navbar__1COmD" id="header-nav">
       <div class="container-fluid">
-        <a class="navbar-brand" href="home.html"><img class="logo" src="./Design/LogoWebRedBlack-02.png" alt="" width="30"
+        <a class="navbar-brand" href="index.html"><img class="logo" src="./Design/LogoWebRedBlack-02.png" alt="" width="30"
             height="24"></a>
         <button id="nav" class="navbar-toggler" id="nav" style="background-color:#8b0000" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -326,7 +333,7 @@ font-size:18px;
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 font_1em">
             <li class="nav-item">
-              <a class="nav-link " href="movies.html" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Phim ngắn</a>
+              <a class="nav-link " href="movies.html" style="border-bottom: 2px solid white;" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Phim ngắn</a>
             </li>
             <li class="nav-item">
               <a class="nav-link " href="web-series.html" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'" >Phim dài tập</a>
@@ -371,17 +378,17 @@ font-size:18px;
             </li>
             <div style="position: relative; display: inline-block; padding-top: 5px; padding-left: 15px;">
               <li>
-                <button  type="button" class="btn font-mulish btn-light" onclick="login()"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Đăng nhập</button>
+                <button  type="button" class="btn font-mulish btn-light" onclick="login()"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">Đăng nhập</button>
               </li>
             </div>
           </ul>
           <form id="searchForm" class="d-flex" style=" justify-content: center;">
-            <input class="form-control me-2" type="text" id="searchText" placeholder="Search" aria-label="Search">
-            <button class="btn btn-danger" type="submit">Search</button>
+            <input class="form-control me-2" type="text" id="searchText" placeholder="Tìm kiếm" aria-label="Search">
+            <button class="btn btn-danger" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
           </form>
         </div>
       </div>
-      </nav>
+    </nav>
 
         <!-- navbar ends -->
 
@@ -390,39 +397,39 @@ font-size:18px;
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="./Images/msd.jpg"  height="400" class="d-block w-100" alt="...">
+              <img src="./Design/Banner/online-cinema-banner.jpg"  height="400" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-              <img src="./Images/YJHD cover.jpg" height="400"  class="d-block w-100" alt="...">
+              <img src="./Design/Banner/eb407ea1-1335-4832-9c60-5c13d47762c4.png" height="400"  class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-              <img src="./Images/vlhta.jpg" height="400"  class="d-block w-100" alt="...">
+              <img src="./Design/Banner/sha256_d27306ebba09dafb716ef3b0e9b3d84df99cafb9c5a678b1ecd9a3ccf73de5e6.webp" height="400"  class="d-block w-100" alt="...">
             </div>
-            <div class="carousel-item">
+            <!-- <div class="carousel-item">
               <img src="./Images/Idiots.png" height="400"  class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
               <img src="./Images/ckd.jpg" height="400"  class="d-block w-100" alt="...">
-            </div>
+            </div> -->
           </div>
           <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="carousel-control-prev-icon" style="color: white; background-color: black;" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </a>
           <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="carousel-control-next-icon" style="color: white; background-color: black;" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </a>
         </div>
 
-      </div>
+    </div>
         <div class="row poster">
             <div class="container">
                 <div id="movies" class="row"></div>
             </div>
             <hr>
             <div class="row">
-                <h3 class="section-title text-center">Popular</h3>
+                <h3 class="section-title text-center">Phổ biến</h3>
             </div>
             <div class="col">
                 <div class="card movie_card">
@@ -476,7 +483,7 @@ font-size:18px;
 
              <div class="row poster">
             <div class="row">
-                <h3 class="section-title text-center">Top Picks For You</h3>
+                <h3 class="section-title text-center">Lựa chọn hàng đầu</h3>
             </div>
             <div class="col">
                 <div class="card movie_card">
@@ -533,7 +540,7 @@ font-size:18px;
             </div>
             <div class="row poster">
             <div class="row">
-                <h3 class="section-title text-center">Featured</h3>
+                <h3 class="section-title text-center">Đặc sắc</h3>
             </div>
             <div class="col">
                 <div class="card movie_card">
@@ -596,7 +603,7 @@ font-size:18px;
        </div>
             <div class="row poster">
             <div class="row">
-                <h3 class="section-title text-center">Comedy</h3>
+                <h3 class="section-title text-center">Hài kịch</h3>
             </div>
             <div class="col">
                 <div class="card movie_card">
@@ -653,7 +660,7 @@ font-size:18px;
 
    <div class="row poster">
             <div class="row">
-                <h3 class="section-title text-center">Romance</h3>
+                <h3 class="section-title text-center">Tình cảm</h3>
             </div>
             <div class="col">
                 <div class="card movie_card">
@@ -713,48 +720,48 @@ font-size:18px;
       <hr class="footer-hr">
       <div class="footer-content">
         <div class="footer-left">
-          <a href="home.html"><img class="footer-logo" src="Images/TheaterLogoFinal.png" alt="" width="30"
+          <a href="home.html"><img class="footer-logo" src="Design/LogoWebRedBlack-02.png" alt="" width="30"
               height="24"></a>
-          <p class="footer-bottom-tagline">Watch! Chill! Repeat!</p>
+          <p class="footer-bottom-tagline">Xem và thật Chill</p>
         </div>
         <div class="footer-middle">
-          <h2 class="footer-heading">Follow Us</h2>
+          <h2 class="footer-heading">Theo dõi chúng tớ</h2>
           <ul class="footer-middle-list icons">
             <a class="footer-links" href="https://www.facebook.com/" target="_blank"><i
-                class="fab fa-facebook-f facebook" style="color:red"></i></a>
+                class="fab fa-facebook-f facebook" style="color:#027CEB"></i></a>
             <a class="footer-links" href="https://twitter.com/login?lang=en" target="_blank"><i
-                class="fab fa-twitter twitter" style="color:red"></i></a>
+                class="fab fa-twitter twitter" style="color:#2EA9EF"></i></a>
             <a class="footer-links" href="https://www.linkedin.com/login" target="_blank"><i
-                class="fab fa-linkedin linkedin" style="color:red"></i></a>
+                class="fab fa-linkedin linkedin" style="color:#005F90"></i></a>
             <a class="footer-links" href="https://www.instagram.com/" target="_blank"><i
-                class="fab fa-instagram instagram" style="color:red"></i></a>
+                class="fab fa-instagram instagram" style="color:#D72843"></i></a>
             <a class="footer-links" href="https://github.com/QAZIMAAZARSHAD/Movie-Streaming-Website" target="_blank"><i
-                class="fab fa-github github" style="color:red"></i></a>
+                class="fab fa-github github" style="color:#2F2F2F"></i></a>
           </ul>
         </div>
         <div class="footer-middle">
-          <h2 class="footer-heading">Services</h2>
-          <ul class="footer-middle-list">
-            <li class="footer-middle-list-item"><a href="home.html">Enjoy Latest Movies</a> </li>
-            <li class="footer-middle-list-item"><a href="web-series.html">Watch Web-Series</a> </li>
-            <li class="footer-middle-list-item"><a href="kids.html">Everything for Kids</a> </li>
-            <li class="footer-middle-list-item"><a href="news.html">Coming soon</a> </li>
-            <li class="footer-middle-list-item"><a href="premium.html">Get Premium Subscription</a> </li>
-            <li class="footer-middle-list-item"><a href="faq.html">FAQ</a> </li>
+          <h2 class="footer-heading">Phim Hay Vai có gì</h2>
+          <ul class="footer-middle-list" style="padding-left: 0;">
+            <li class="footer-middle-list-item"><a href="home.html">Thưởng thức những bộ phim mới nhất</a> </li>
+            <li class="footer-middle-list-item"><a href="web-series.html">Xem các bộ phim dài tập chất lượng</a> </li>
+            <li class="footer-middle-list-item"><a href="kids.html">Có tất cả mọi thứ cho trẻ</a> </li>
+            <li class="footer-middle-list-item"><a href="news.html">Sắp ra mắt</a> </li>
+            <li class="footer-middle-list-item"><a href="premium.html">Gói đăng ký siêu cấp</a> </li>
+            <li class="footer-middle-list-item"><a href="faq.html">Hỏi & Đáp</a> </li>
           </ul>
         </div>
-        <div class="footer-middle">
-          <h2 class="footer-heading">Try Our App</h2>
-          <ul class="footer-middle-list icons">
-            <a class="footer-links" href="#"><i class="fab fa-google-play" style="color:red"></i></a>
-            <a class="footer-links" href="#"><i class="fab fa-app-store-ios" style="color:red"></i></a>
-          </ul>
-        </div>
+       <div class="footer-middle">
+                <h2 class="footer-heading">Ứng dụng</h2>
+                <ul class="footer-middle-list icons">
+                    <a class="footer-links" href="#"><i class="fab fa-google-play" style="color:#59C3ED"></i></a>
+                    <a class="footer-links" href="#"><i class="fab fa-app-store-ios" style="color:#1899E9"></i></a>
+                </ul>
+            </div>
         <div class="footer-right">
           <p class="footer-links">
-          <h2 class="footer-heading">Contact Us</h2>
-          <p class="footer-bottom-tagline">Feel free to contact us.</p>
-          <a class="footer-contact-button" href="contactus.html">Contact</a>
+          <h2 class="footer-heading">Liên hệ</h2>
+          <p class="footer-bottom-tagline">Hãy liên lạc nếu cần thiết </p>
+          <a class="footer-contact-button" href="contactus.html">Kết nối</a>
           </p>
         </div>
       </div>
@@ -763,10 +770,11 @@ font-size:18px;
         <p>Copyright &copy; and &reg; Since
           <script>
             document.write(new Date().getFullYear())
-          </script> Under ApnaTheatre.com : (Project Is Done By Qazi Maaz Arshad)
+          </script> phimhayvai.vn : (Dự án được thực hiện bởi Nhất - Vũ - Vỹ)
         </p>
       </div>
     </footer>
+
 
     <!----------------------scroll back to top button-->
     <button id="scrollToTopButton" title="Go to top" class="ml-5">
@@ -791,7 +799,7 @@ font-size:18px;
       });
     </script>
 <script>
-  function logout(){
+  function login(){
     window.location.replace("login.html");
   }
   </script>
@@ -813,9 +821,8 @@ font-size:18px;
       });
     </script>
     <!-- bootsstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
     <script src="./static/script.js"></script>
 </body>
 </html>
