@@ -585,18 +585,158 @@ font-size:18px;
             </div>
         </div>
 
+        <div class="row poster">
+          <div class="row">
+              <h3 class="section-title text-center">Đề xuất</h3>
+          </div>
+          <div class="col">
+              <div class="card movie_card">
+                  <img src="./Images/scam.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                      <h5 class="card-title">Scam 1992</h5>
+                      <span class="movie_info">2019</span>
+                      <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9.5 / 10</span>
+                  </div>
+              </div>
+          </div>
+          <div class="col">
+              <div class="card movie_card">
+                  <img src="./Images/asur.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                      <h5 class="card-title">Asur:Welcome to your darkest side</h5>
+                      <span class="movie_info">2019</span>
+                      <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 8.4 / 10</span>
+                  </div>
+              </div>
+          </div>
+          <div class="col">
+              <div class="card movie_card">
+                  <img src="./Images/panch.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                      <h5 class="card-title">Panchayat</h5>
+                      <span class="movie_info">2019</span>
+                      <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 8.7 / 10</span>
+                  </div>
+              </div>
+          </div>
+          <div class="col">
+              <div class="card movie_card">
+                  <img src="./Images/ashram.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                      <h5 class="card-title">Aashram</h5>
+                      <span class="movie_info">2019</span>
+                      <span class="movie_info_rating"><i class="fas fa-star"></i> IMDb 7.5 / 10</span>
+                  </div>
+              </div>
+          </div>
+          <div class="col">
+              <div class="card movie_card">
+                  <img src="./Images/criminal.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                      <h5 class="card-title">Criminal Justice</h5>
+                      <span class="movie_info">2019</span>
+                      <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
 
-
-
+                  </div>
+              </div>
+          </div>
+      </div>
     </div>
 
+    <div id="data-list" class="row" style="margin: 0 20px;">
+    
+    </div>
+
+    <script>
+        fetch('http://localhost:8080/API/phims')
+            .then(response => response.json())
+            .then(data => {
+                const dataList = document.getElementById('data-list');
+                const srcImg = "http://localhost:8080/photos/phims/";
+                let itemCount = 0; // Biến đếm số lượng item đã được thêm vào
+
+                data.forEach(item => {
+                    const ngaySanXuat = item.ngaysanxuat;
+                    const imgId = item.idphim + "/";
+                    const year = ngaySanXuat.substring(0, 4);
+                    const movieCard = document.createElement('div');
+                    movieCard.classList.add('col');
+                    movieCard.innerHTML = `
+                        <div class="card movie_card">
+                            <img src="${srcImg+imgId+item.hinhanh}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" id="name-movie">${item.tenphim}</h5>
+                                <span class="movie_info" id="movie-year">${year}</span>
+                                <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb ${item.diemIMDB} / 10</span>
+                            </div>
+                        </div>
+                    `;
+
+                    dataList.appendChild(movieCard);
+
+                    itemCount++; // Tăng biến đếm
+
+                    // Nếu đã thêm đủ 5 item vào hàng hiện tại, tạo một hàng mới và reset biến đếm
+                    if (itemCount === 5) {
+                        dataList.appendChild(document.createElement('div')); // Tạo một hàng mới
+                        itemCount = 0; // Reset biến đếm về 0
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Lỗi khi lấy dữ liệu:', error);
+            });
+    </script>
+
+    
 
 
 
 
+    <!-- <div id="data-list" class="row">
+      <div class="col">
+        <div class="card movie_card">
+            <img src="./Images/scam.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" id="name-movie"></h5>
+                <span class="movie_info" id="movie-year"></span>
+                <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9.5 / 10</span>
+            </div>
+        </div>
+    </div>
+    </div> -->
+
+    <!-- <script>
+        // Gửi yêu cầu HTTP đến endpoint API trên backend
+        fetch('http://localhost:8080/API/phims')
+            .then(response => response.json())
+            .then(data => {
+                
+            })
+            .catch(error => {
+                console.error('Lỗi khi lấy dữ liệu:', error);
+            });
+    </script> -->
 
 
 
+<!-- // Xử lý dữ liệu và hiển thị trên giao diện
+                const dataList = document.getElementById('data-list');
+                data.forEach(item => {
+                    const listItem = document.createElement('li');
+    
+                    // Tạo phần tử cho tên phim
+                    const nameElement = document.createElement('h2');
+                    nameElement.textContent =  item.tenphim;
+                    listItem.appendChild(nameElement);
+    
+                    // Tạo phần tử cho hình ảnh "http://localhost:8080/src/image/directory/"
+                    const imageElement = document.createElement('img');
+                    imageElement.src =  item.hinhanh;
+                    listItem.appendChild(imageElement);
+    
+                    dataList.appendChild(listItem);
+                }); -->
     <!-------------------------------Footer-------------------------------->
     <div id="waterdrop"></div>
     <footer class="footer">

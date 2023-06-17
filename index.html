@@ -121,7 +121,13 @@
   transition: background-color 0.5s;
 }
 }
-
+.text-content-movie {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  padding: 0 4px;
+}
 #header-nav .nav-link a:hover{
   color: red;
 }
@@ -243,17 +249,17 @@
             <div class="select">
               <select class="form-select css-select">
                 <option selected="" value="">- Tất cả -</option>
-                <option value="am-nhac">Âm nhạc</option>
-                <option value="bi-an">Bí ẩn</option>
-                <option value="chien-tranh">Chiến tranh</option>
-                <option value="chien-tranh-chinh-tri">Chiến tranh &amp; Chính trị</option>
-                <option value="chinh-kich">Chính kịch</option>
-                <option value="gia-dinh">Gia đình</option>
-                <option value="giat-gan">Giật gân</option>
-                <option value="hai">Hài</option>
-                <option value="hanh-dong">Hành động</option>
-                <option value="hanh-dong-phieu-luu">Hành động &amp; Phiêu lưu</option>
-                <option value="hoat-hinh">Hoạt hình</option>
+                <option value="am-nhac">Hành động</option>
+                <option value="bi-an">Chiến tranh</option>
+                <option value="chien-tranh">Drama</option>
+                <option value="chien-tranh-chinh-tri">Giật gân</option>
+                <option value="chinh-kich">Tình cảm</option>
+                <option value="gia-dinh">Hoạt hình</option>
+                <option value="giat-gan">Kinh dị</option>
+                <option value="hai">Lịch sử</option>
+                <option value="hanh-dong">Khoa học viễn tưởng</option>
+                <option value="hanh-dong-phieu-luu">Tâm lý</option>
+                <!-- <option value="hoat-hinh">Hoạt hình</option>
                 <option value="kinh-di">Kinh dị</option>
                 <option value="ky-ao">Kỳ ảo</option>
                 <option value="lang-man">Lãng mạn</option>
@@ -269,7 +275,7 @@
                 <option value="truyen-hinh">Truyền hình</option>
                 <option value="vien-tay">Viễn Tây</option>
                 <option value="vien-tuong">Viễn tưởng</option>
-                <option value="vien-tuong-than-thoai">Viễn tưởng &amp; Thần thoại</option>
+                <option value="vien-tuong-than-thoai">Viễn tưởng &amp; Thần thoại</option> -->
               </select>
             </div>
           </div>
@@ -284,7 +290,7 @@
                       <option value="US">Mỹ</option>
                       <option value="KR">Hàn Quốc</option>
                       <option value="GB">Anh</option>
-                      <option value="FR">Pháp</option>
+                      <option value="FR">Việt Nam</option>
                       <option value="CA">Canada</option>
                       <option value="HK">Hồng Kông</option>
                       <option value="JP">Nhật Bản</option>
@@ -293,16 +299,12 @@
                       <option value="IN">Ấn Độ</option>
                       <option value="TH">Thái Lan</option>
                       <option value="AU">Úc</option>
-                      <option value="VN">Việt Nam</option>
                       <option value="DE">Đức</option>
                       <option value="SE">Thụy Điển</option>
                       <option value="IT">Ý</option>
                       <option value="HU">Hungary</option>
-                      <option value="IE">Ai-len</option>
-                      <option value="MT">Malta</option>
-                      <option value="NZ">New Zealand</option>
                       <option value="RU">Nga</option>
-                      <option value="IS">Iceland</option>
+                      <!-- <option value="IS">Iceland</option>
                       <option value="FI">Phần Lan</option>
                       <option value="MW">Ma-la-uy</option>
                       <option value="CO">Colombia</option>
@@ -332,7 +334,7 @@
                       <option value="KZ">Kazakhstan</option>
                       <option value="ZA">Nam Phi</option>
                       <option value="AT">Áo</option>
-                      <option value="CH">Thụy Sĩ</option>
+                      <option value="CH">Thụy Sĩ</option> -->
                     </select>
                   </div>
                 </div>
@@ -485,7 +487,79 @@
     <div class="maincontainer">
       <hr>
       <div class="container">
-          <div id="movies" class="row"></div>
+          <div id="movies1" class="row">
+            <div class="title-nav online">Phim đề cử</div>
+          </div>
+          <script>
+            fetch('http://localhost:8080/API/phims')
+              .then(response => response.json())
+              .then(data => {
+                const dataList = document.getElementById('movies1');
+                const srcImg = "http://localhost:8080/photos/phims/";
+                
+                data.forEach(item => {
+                  const ngaySanXuat = item.ngaysanxuat;
+                  const imgId = item.idphim + "/";
+                  const year = ngaySanXuat.substring(0, 4);
+                  const movieCard = document.createElement('div');
+                  movieCard.classList.add('col-md-3');
+                  movieCard.innerHTML = `
+                    <div class="poster">
+                      <div class="flip-card_i">
+                        <div class="flip-card-inner_i">
+                          <div class="flip-card-front_i">
+                            <img src="${srcImg+imgId+item.hinhanh}" alt="Avatar" style="width:250px;height:360px;">
+                          </div>
+                          <div class="flip-card-back_i">
+                            <h5 class="p-2">${item.tenphim}</h5>
+                            <p>Thời lượng: ${item.thoiluong} phút</p>
+                            <p class="para_i text-content-movie">${item.noidungphim}</p>
+                            <br/>
+                            <button class="trailer_i" type="submit" value="" onclick="openWin('${item.trailer}')">▶ Trailer</button>
+                            <br>
+                            <br>
+                            <button class="btn_i b4_i" onclick="openMovieDetail('${item.idphim}')">▶ Xem</button>
+                          </div>
+                        </div>
+                        <div class="flim">
+                          <b>${item.tenphim}</b><br>IMDB - ${item.diemIMDB}
+                        </div>
+                      </div>
+                    </div>
+                  `;
+                  
+                  dataList.appendChild(movieCard);
+                });
+              })
+              .catch(error => {
+                console.error('Lỗi khi lấy dữ liệu:', error);
+              });
+          
+            function openWin(trailerLink) {
+              window.open(trailerLink, "_blank", "top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+            }
+          
+            function openMovieDetail(idphim) {
+              fetch(`http://localhost:8080/API/movies/${idphim}`)
+                .then(response => response.json())
+                .then(data => {
+                  // Xử lý dữ liệu nhận được từ API
+                  console.log(data);
+                  // Ví dụ: Hiển thị thông tin phim trong một view khác
+                  navigateToMovieDetail(data);
+                })
+                .catch(error => {
+                  console.error('Lỗi khi lấy dữ liệu phim:', error);
+                });
+            }
+            function navigateToMovieDetail(movieData) {
+              // Chuyển đến view mới
+              window.location.href = 'path/to/movie-detail-view.html';
+
+              // Lưu dữ liệu phim vào Local Storage để sử dụng trong view mới
+              localStorage.setItem('movieData', JSON.stringify(movieData));
+            }
+          </script>
       </div>
       
       <div class="container" id="Movies">
@@ -527,7 +601,7 @@
             </div>
           </div>
         </div> 
-
+        
         <div class="poster">
           <div class="flip-card_i">
             <div class="flip-card-inner_i">

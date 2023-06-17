@@ -256,5 +256,6 @@ img {
 }
 
 .col img {
+  object-fit: cover;
   cursor: pointer;
 }

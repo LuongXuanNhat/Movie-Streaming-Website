@@ -2,35 +2,520 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ApnaTheatre</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title id="title-name-page"></title>
+  <link rel="shortcut icon" href="./Design/Netflix_icon.svg.png" type="image/x-icon">
 
-    <!-- Font  -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+  <!-- Font  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="static/bootstrap.min.css">
-    <link rel="stylesheet" href="static/style-min.css">
-    <link rel="shortcut icon" href="./Images/Logo/Title.jpeg" type="image/x-icon">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link href="./static/style.css" rel="stylesheet" type="text/css" />
+  <link href="./static/premium.css" rel="stylesheet" type="text/css" />
+  
+  <!-- fontawesome  6.0.0 -->
+<link href="./fontawesome-free-6.4.0-web/css/all.min.css" rel="stylesheet">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="static/bootstrap.min.css">
+  <link rel="stylesheet" href="static/style-min.css">
+  <link rel="stylesheet" href="cards.css">
+
+ 
+</head>
+<body>
+
 </head>
 
-<body>
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header btn bg-danger"><a href="home.html" class="navbar-brand text-white">ApnaTheatre</a></div>
+<style>
+  #scrollToTopButton{
+position: fixed;
+bottom: 40px;
+right: 25px;
+font-size: 25px;
+z-index: 99;
+width: 50px;
+height: 50px;
+background-color:red;
+color:black;
+border: none;
+cursor: pointer;
+outline: none;
+padding: 6px;
+border-radius: 50%;
+}
+#scrollToTopButton:hover, i:hover {
+background-color:white;
+color:red;
+}
+#nav:hover
+{
+background-color:#e60e23!important;
+
+}
+
+
+
+.logo {
+  width: 140px;
+  height: 46px;
+  padding: 3px;
+  margin: 0 ;
+  margin-left: 31px;
+  padding: 0;
+}
+.fas:hover{background: none!important ;}
+.nav-item{ flex-wrap:wrap;}
+.menu li a:hover {
+color: red !important;
+opacity: 0.5;
+}
+
+/* CSS FOR FOOTER */
+.footer{
+margin-bottom:15px;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.footer-content{
+display:flex;
+justify-content:space-between;
+padding: 10px 20px;
+}
+.footer-logo{
+  width: 140px;
+  height: 46px;
+  padding: 3px;
+  margin:0px 0px 0px 10px;
+  padding: 0;
+}
+.nav-item :hover{
+  margin-bottom: 10px;
+  /* background-color: aquamarine; */
+  border-bottom: 3px;
+  border-color: red;
+  border-bottom-style: solid;
+}
+.footer-heading{
+color:white;
+}
+.footer-left, .footer-right, .footer-middle{
+text-align:center;
+}
+.icons{
+margin-left:-30px;
+}
+.footer-links i{
+font-size:30px;
+width:40px;
+height:40px;
+padding:5px;
+margin-top:30px;
+}
+.footer-middle a i:hover{
+background-color:white;
+border-radius:50px;
+color:red;
+}
+.footer-middle-list-item{
+list-style:none;
+font-size:15px;
+font-family:cursive;
+margin:5px 0px 0px 15px;
+text-align:left;
+}
+.footer-middle-list-item a{
+text-decoration:none;
+color:white;
+}
+.footer-middle-list-item a:hover{
+color:red;
+}
+.footer-right{
+margin-top:-15px;
+}
+.footer-contact-button{
+font-size:20px;
+background-color:red;
+color:black;
+padding:10px;
+border:none;
+border-radius:10px;
+text-decoration:none;
+}
+.footer-contact-button:hover{
+background-color:white;
+color:red;
+}
+
+.text-detail-movie {
+    color: #d6d6d6;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    padding: 4px 0px;
+    font-size: 1.25em;
+}
+
+.footer-bottom-tagline{
+color:white;
+font-size:15px;
+font-family:cursive;
+margin-bottom:25px;
+}
+.detail_card {
+    width: 17em;
+}
+
+.footer-copyright{
+text-align:center;
+color:white;
+margin-top:20px;
+font-size:18px;
+}
+.footer-hr{
+  color:grey;
+  font-weight:bold;
+}
+/***************** Media Queries *********************/
+
+@media (max-width: 600px) {
+.footer-content{
+ display:block;
+ text-align:center;
+}
+.footer-middle-list-item{
+text-align:center;
+margin-left:-20px;
+}
+
+.footer-left, .footer-middle, .footer-right{
+margin-top:50px;
+}
+}
+
+.layout_navbar__1COmD {
+  
+  -webkit-transition: background-color .3s linear;
+  transition: background-color .3s linear
+}
+.btn-click-movie {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: red;
+    font-size: 1.25em;
+    font-family: 'Mulish';
+    font-weight: 600;
+    color: white;
+}
+
+.card-body {
+    text-align: center;
+}
+.layout_navbar__1COmD.layout_hasBg__1CDaI {
+  background-color: rgba(51,10,103,.93)
+}
+#header-nav {
+z-index: 30;
+position: fixed;
+top: 0;
+right: 0;
+left: 0;
+transition: background-color 0.5s;
+}
+.row  .col {
+justify-content: center;
+display: flex;
+margin-bottom: 24px;
+padding-left: 0;
+}
+@media only screen and (max-width: 990px) {
+  #header-nav {
+  z-index: 30;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #06121e99;
+  transition: background-color 0.5s;
+  }
+}
+#header-nav .nav-link {
+color: white;
+margin-left: 20px;
+}
+
+  @media only screen and (max-width: 1400px){
+#header-nav .nav-link {
+  color: white;
+  font-size: 18px;
+  margin-left: 18px;
+}
+}
+
+@media only screen and (min-width: 1133px) and (max-width: 1275px) {
+#header-nav .nav-link {
+  color: white;
+  font-size: 15px;
+  margin-left: 10px;
+} 
+}
+@media only screen and (min-width: 1035px) and (max-width: 1132px) {
+#header-nav .nav-link {
+  color: white;
+  font-size: 15px;
+  margin-left: 10px;
+} 
+#searchText{
+  width: 120px;
+}
+#submitBtn{
+  width: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+}
+@media only screen and (min-width: 993px) and (max-width: 1034px) {
+#header-nav .nav-link {
+  color: white;
+  font-size: 14px;
+  margin-left: 10px;
+} 
+
+#searchText{
+width: 100px;
+}
+#submitBtn{
+width: 50px;
+display: flex;
+justify-content: center;
+}
+
+
+
+}
+</style>    
+<script>
+  window.addEventListener('scroll', function() {
+  var myDiv = document.getElementById('header-nav');
+  var scrollPosition = window.scrollY;
+  
+  if (scrollPosition > 0) {
+    myDiv.classList.add('layout_hasBg__1CDaI');
+  } else {
+    myDiv.classList.remove('layout_hasBg__1CDaI');
+  }
+  });
+  </script>
+  
+  </head>
+  
+  <body  style="height:auto; background: linear-gradient( rgba(0, 0, 0, 0.616), rgba(0, 0, 0, -2.384) ),url(./Design/Banner/ChiTietPhim-1-01.png) no-repeat center center fixed ;background-size: cover;" >
+    <div >
+        
+  <!-- navbar starts -->
+
+  <div class="scroll-bar">
+    <!-- navbar starts -->
+
+    <nav class="navbar navbar-expand-lg navbar-light layout_navbar__1COmD" id="header-nav">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html"><img class="logo" src="./Design/LogoWebRedBlack-02.png" alt="" width="30"
+            height="24"></a>
+        <button id="nav" class="navbar-toggler" id="nav" style="background-color:#8b0000" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" style="background-color:dark-grey;"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 font_1em">
+            <li class="nav-item">
+              <a class="nav-link " href="movies.html" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Phim ngắn</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="web-series.html" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'" >Phim dài tập</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="kids.html"   onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Anime</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tv.html"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">TV</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="premium.html"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Gói vip</a>
+            </li>
+      
+            <li class="nav-item">
+              <a class="nav-link" href="contactus.html"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Liên hệ</a>
+            </li>
+            <li>
+              <!-- Genre dropdown starts-->
+              <div>
+                <div class="dropdown" style="position: relative; disPlay: inline-block; padding-top: 5px; padding-left: 15px;">
+                  <button class="btn text-white"  type="button" id="dropdownMenuButton" style="font-size:16px;margin-bottom: 6px;">
+                    Thể loại <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-content" style="color: white;">
+                    <a href="action.html">Hành động</a>
+                    <a href="war.html">Chiến tranh</a>
+                    <a href="drama.html">Drama</a>
+                    <a href="suspense.html">Giật gân</a>
+                    <a href="romance.html">Tình cảm</a>
+                    <a href="anime.html">Hoạt hình</a>
+                    <a href="horror.html">Kinh dị</a>
+                    <a href="documentary.html">Lịch sử</a>
+                    <a href="fantasy.html">Khoa học viễn tưởng</a>
+                    <a href="comedy.html">Phim tâm lý</a>
+                  </div>
+                </div>
+              </div>
+              <!-- Genre dropdown ends-->
+            </li>
+            <div style="position: relative; display: inline-block; padding-top: 5px; padding-left: 15px;">
+              <li>
+                <button  type="button" class="btn font-mulish btn-light" onclick="login()"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Đăng nhập</button>
+              </li>
+            </div>
+          </ul>
+          <form id="searchForm" class="d-flex" style=" justify-content: center;">
+            <input class="form-control me-2" type="text" id="searchText" placeholder="Tìm kiếm" aria-label="Search">
+            <button class="btn btn-danger" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </form>
         </div>
+      </div>
     </nav>
-    <div class="container">
-        <div id="movie" class="well"></div>
+
+
+  <!-- navbar ends -->
+
+
+  <div class=" row" style=" margin-top: 74px; margin-left: 0; margin-right: 0;">
+
+
+    <div class="col-md-5 p-5 no-gutters justify-content-center">
+        <div class="col">
+            <div class="card movie_card detail_card">
+                <img src="./Images/scam.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <button class="text-uppercase btn btn-click-movie">
+                        Xem phim
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="js/main-min.js"></script>
-    <script>
-        getMovie();
-    </script>
+    <div class="col-md-7 p-5 no-gutters justify-content-center" >
+        <div class="" id="name-movie" style="font-size: 2em; color: white; font-weight: 600; padding: 4px 0;">
+            Tên Phim
+        </div>
+        <div class="text-detail-movie" style="display: flex; align-items: center;"> Thời lượng |
+            <div class="" id="time-movie" style="padding:  2px;">
+                1h 20 phút
+            </div>
+        </div>
+        
+        <div class="text-detail-movie" id="date-movie">
+            10/12/2023
+        </div>
+        <div class="text-detail-movie" id="derector-movie">
+            Lương Xuân Nhất
+        </div>
+        <div class="row text-detail-movie">
+            <div class="" id="actor-movie">
+                Lương Xuân Nhất
+            </div>
+            <div class="" id="actor-img-movie">
+                Lương Xuân Nhất
+            </div>
+        </div>
+        <div class="text-detail-movie " style="display: block; ">
+            Phim hay
+            <div id="content-movie" style="font-style: italic;">
+                Nội dung phim
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- JS Add Info -->
+  <script>
+    // function displayMovieDetail() {
+    // // Lấy dữ liệu phim từ Local Storage
+    // const movieData = JSON.parse(localStorage.getItem('movieData'));
+
+    // // Triển khai logic hiển thị thông tin phim trong view mới
+    // // Ví dụ: Gán giá trị thuộc tính 'tenphim' vào một phần tử HTML
+    // const movieTitleElement = document.getElementById('movie-title');
+    // movieTitleElement.textContent = movieData.tenphim;
+    // // Các xử lý khác...
+    // }
+
+    // displayMovieDetail();
+  </script>
+  <!-- JS Add Info -->
+  </div>
+  <br>
+  <br>
+  
+
+  <!----------------------scroll back to top button-->
+  <button id="scrollToTopButton" title="Go to top" class="ml-5">
+    <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+  </button>
+  <script>
+    $(document).ready(function () {
+      var scrollTopButton = document.getElementById("scrollToTopButton");
+      window.onscroll = function () { scrollFunction() };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          scrollTopButton.style.display = "block";
+        } else {
+          scrollTopButton.style.display = "none";
+        }
+      }
+
+      $("#scrollToTopButton").click(function () {
+        $('html ,body').animate({ scrollTop: 0 }, 800)
+      });
+    });
+  </script>
+  <script>
+    function login() {
+      window.location.replace("login.html");
+    }
+  </script>
+  <!-- footer scripts -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="https://daniellaharel.com/raindrops/js/raindrops.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="js/main-min.js"></script>
+
+  <script>
+    jQuery('#waterdrop').raindrops({
+      color: '#292c2f',
+      canvasHeight: 150,
+      density: 0.1,
+      frequency: 20
+    });
+  </script>
+  <!-- bootsstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+  <script src="./static/script.js"></script>
+    
+</div>
+
+
 </body>
 
 </html>
+
+
