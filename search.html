@@ -218,8 +218,29 @@
           </ul>
           <form id="searchForm" class="d-flex" style=" justify-content: center;">
             <input class="form-control me-2" type="text" id="searchText" placeholder="Tìm kiếm" aria-label="Search">
-            <button class="btn btn-danger" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button class="btn btn-danger" type="submit" onclick="searchMovies()"><i class="fa-solid fa-magnifying-glass"></i></button>
           </form>
+          <script>
+            function searchMovies() {
+              const searchText = document.getElementById('searchText').value;
+
+              // Gửi yêu cầu tìm kiếm phim đến controller API
+              fetch(`http://localhost:8080/API/phims/search?keyword=${searchText}`)
+                .then(response => response.json())
+                .then(data => {
+                  // Chuyển đến view search.html và truyền dữ liệu phim và từ khóa tìm kiếm qua URL
+                  const searchParams = new URLSearchParams();
+                  searchParams.append('keyword', searchText);
+                  searchParams.append('searchResults', JSON.stringify(data));
+                  const currentUrl = new URL('search.html', window.location.origin);
+                  currentUrl.search = searchParams.toString();
+                  window.location.href = currentUrl.href;
+                })
+                .catch(error => {
+                  console.error('Lỗi khi tìm kiếm phim:', error);
+                });
+            }
+          </script>
         </div>
       </div>
       </nav>
@@ -235,25 +256,36 @@
     
 
         
-    <div class="maincontainer">
+    <div class="maincontainer" style="margin-top: 54px;">
       <hr>
       <div class="container" style="min-height: 500px;">
           <div id="movies1" class="row">
-            <div class="title-nav online">Từ tìm kiếm | 
-              <div style="display: flex;" id="text-search"> </div>
-            </div>
-          </div>
+            <h3 class=" online" >Từ tìm kiếm | 
+              <div style="display: inline;" id="text-search"> </div>
+            </h3>
+          </div> 
           <script>
-            fetch('http://localhost:8080/API/phims')
-              .then(response => response.json())
-              .then(data => {
-                const dataList = document.getElementById('movies1');
+            // Gọi hàm displaySearchResults() khi view search.html được tải
+            displaySearchResults();
+
+            function displaySearchResults() {
+              const searchParams = new URLSearchParams(window.location.search);
+              const searchText = searchParams.get('keyword');
+              const searchResults = JSON.parse(searchParams.get('searchResults'));
+
+              // Gán từ khóa tìm kiếm vào thẻ có id "text-search"
+              document.getElementById('text-search').textContent = searchText;
+
+              if (searchResults && searchResults.length > 0 && searchText) {
                 const srcImg = "http://localhost:8080/photos/phims/";
+                const movieListElement = document.getElementById('movies1');
                 
-                data.forEach(item => {
+                
+                searchResults.forEach(item => {
                   const ngaySanXuat = item.ngaysanxuat;
                   const imgId = item.idphim + "/";
                   const year = ngaySanXuat.substring(0, 4);
+                  
                   const movieCard = document.createElement('div');
                   movieCard.classList.add('col-md-3');
                   movieCard.innerHTML = `
@@ -261,7 +293,7 @@
                       <div class="flip-card_i">
                         <div class="flip-card-inner_i">
                           <div class="flip-card-front_i">
-                            <img src="${srcImg+imgId+item.hinhanh}" alt="Avatar" style="width:250px;height:360px;">
+                            <img src="${srcImg+imgId+item.hinhanh}" alt="Avatar" style="width:250px;height:360px;object-fit: cover;">
                           </div>
                           <div class="flip-card-back_i">
                             <h5 class="p-2">${item.tenphim}</h5>
@@ -281,12 +313,13 @@
                     </div>
                   `;
                   
-                  dataList.appendChild(movieCard);
+                  movieListElement.appendChild(movieCard);
                 });
-              })
-              .catch(error => {
-                console.error('Lỗi khi lấy dữ liệu:', error);
-              });
+
+                localStorage.removeItem('searchResults');
+              }
+            }
+
           
             function openWin(trailerLink) {
               window.open(trailerLink, "_blank", "top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");

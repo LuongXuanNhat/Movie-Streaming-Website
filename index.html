@@ -40,6 +40,7 @@
     cursor: pointer;
   }
   #scrollToTopButton {
+    display: flex;
     position: fixed;
     bottom: 15px;
     right: 15px;
@@ -195,7 +196,7 @@
                         Thể loại <i class="fa-solid fa-chevron-down"></i>
                     </button>
                     <div class="dropdown-content" style="color: white;">
-                        <a href="action.html">Hành động</a>
+                        <a href="action.html" onclick="searchByCategory(this)">Hành động</a>
                         <a href="war.html">Chiến tranh</a>
                         <a href="drama.html">Drama</a>
                         <a href="suspense.html">Giật gân</a>
@@ -206,6 +207,27 @@
                         <a href="fantasy.html">Khoa học viễn tưởng</a>
                         <a href="comedy.html">Phim tâm lý</a>
                       </div>
+                      <script>
+                        function searchByCategory(element) {
+                        const text = element.innerText;
+                        
+                        fetch(`http://localhost:8080/API/phims/search?theloai=${text}`)
+                        .then(response => response.json())
+                        .then(data => {
+                          // Xử lý dữ liệu phim lấy được
+                          searchParams.append('searchResults', JSON.stringify(data));
+
+                           // Lấy URL của view mới từ thuộc tính href của thẻ <a>
+                          const url = element.getAttribute('href');
+
+                          // Chuyển đến view mới
+                          window.location.href = url;
+                        })
+                        .catch(error => {
+                          console.error('Lỗi khi lấy danh sách phim:', error);
+                        });
+                      }
+                      </script>
                 </div>
               </div>
               <!-- Genre dropdown ends-->
@@ -218,8 +240,30 @@
           </ul>
           <form id="searchForm" class="d-flex" style=" justify-content: center;">
             <input class="form-control me-2" type="text" id="searchText" placeholder="Tìm kiếm" aria-label="Search">
-            <button class="btn btn-danger" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button class="btn btn-danger" type="submit" onclick="searchMovies()"><i class="fa-solid fa-magnifying-glass"></i></button>
           </form>
+          <script>
+            function searchMovies() {
+              const searchText = document.getElementById('searchText').value;
+
+              // Gửi yêu cầu tìm kiếm phim đến controller API
+              fetch(`http://localhost:8080/API/phims/search?keyword=${searchText}`)
+                .then(response => response.json())
+                .then(data => {
+                  // Chuyển đến view search.html và truyền dữ liệu phim và từ khóa tìm kiếm qua URL
+                  const searchParams = new URLSearchParams();
+                  searchParams.append('keyword', searchText);
+                  searchParams.append('searchResults', JSON.stringify(data));
+                  const currentUrl = new URL('search.html', window.location.origin);
+                  currentUrl.search = searchParams.toString();
+                  window.location.href = currentUrl.href;
+                })
+                .catch(error => {
+                  console.error('Lỗi khi tìm kiếm phim:', error);
+                });
+            }
+          </script>
+
         </div>
       </div>
       </nav>
