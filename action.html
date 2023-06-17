@@ -4,9 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>ApnaTheatre.com</title>
-    <link rel="shortcut icon" href="./Images/Logo/Title.jpeg" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>PHV | Hành động</title>
+    <link rel="shortcut icon" href="./Design/Netflix_icon.svg.png" type="image/x-icon">
+
+    <!-- fontawesome  6.0.0 -->
+  <link href="./fontawesome-free-6.4.0-web/css/all.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
@@ -58,6 +60,33 @@ color:red;
   text-align: center;
 }
 
+.layout_navbar__1COmD {
+    -webkit-transition: background-color .3s linear;
+    transition: background-color .3s linear
+}
+
+.layout_navbar__1COmD.layout_hasBg__1CDaI {
+    background-color: rgba(51,10,103,.93)
+}
+#header-nav {
+  z-index: 30;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  transition: background-color 0.5s;
+}
+@media only screen and (max-width: 990px) {
+  #header-nav {
+  z-index: 30;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #06121e99;
+  transition: background-color 0.5s;
+}
+}
 .navbar-nav{
   display: flex;
   align-items: center;
@@ -71,93 +100,103 @@ color:red;
   border-bottom-style: solid;
 }
 </style>
+<script>
+  setTimeout(function () {
+    $('.section').fadeToggle();
+  }, 4000);
+  
+  window.addEventListener('scroll', function() {
+  var myDiv = document.getElementById('header-nav');
+  var scrollPosition = window.scrollY;
 
+  if (scrollPosition > 0) {
+    myDiv.classList.add('layout_hasBg__1CDaI');
+  } else {
+    myDiv.classList.remove('layout_hasBg__1CDaI');
+  }
+});
+</script>
 
-<body>
+<body style="background-color: #06121E;">
     <div class="scroll-bar">
 
         <!-- navbar starts -->
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark" id="header-nav">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="home.html"><img class="logo" src="Images/TheaterLogoFinal.png" alt="" width="30"
-            height="24"></a>
-        <button id="nav" class="navbar-toggler" id="nav" style="background-color:#8b0000" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon" style="background-color:dark-grey;"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="home.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="movies.html">Movies</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="web-series.html">Web Series</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="kids.html">Kids</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="tv.html">TV</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="premium.html">Premium</a>
-            </li>
+        <nav class="navbar navbar-expand-lg navbar-light layout_navbar__1COmD" id="header-nav">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="index.html"><img class="logo" src="./Design/LogoWebRedBlack-02.png" alt="" width="30"
+                height="24"></a>
+            <button id="nav" class="navbar-toggler" id="nav" style="background-color:#8b0000" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon" style="background-color:dark-grey;"></span>
+            </button>
             
-            <li class="nav-item">
-              <a class="nav-link" href="contactus.html">Contact Us</a>
-            </li>
-            <li>
-              <!-- Genre dropdown starts-->
-              <div>
-                <div class="dropdown" style="position: relative; display: inline-block; padding-top: 5px; padding-left: 15px;">
-                    <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton" style="font-size:20px;">
-                        Genres
-                    </button>
-                    <div class="dropdown-content" style="color: white;">
-                        <a href="popular.html">Popular</a>
-                        <a href="crime.html">Crime</a>
-                        <a href="suspense.html">Suspense & Thriller</a>
-                        <a href="action.html">Action</a>
-                        <a href="fantasy.html">Sci-Fi & Fantasy</a>
-                        <a href="documentary.html">Documentary</a>
-                        <a href="horror.html">Horror</a>
-                        <a href="drama.html">Drama</a>
-                        <a href="war.html">War & Politics</a>
-                        <a href="comedy.html">Comedy</a>
-                        <a href="romance.html">Romance</a>
-                        <a href="anime.html">Anime</a>
-                      </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0 font_1em">
+                <li class="nav-item">
+                  <a class="nav-link " href="movies.html" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Phim ngắn</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " href="web-series.html" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'" >Phim dài tập</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="kids.html" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Anime</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="tv.html"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">TV</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="premium.html"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Gói vip</a>
+                </li>
+          
+                <li class="nav-item">
+                  <a class="nav-link" href="contactus.html"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Liên hệ</a>
+                </li>
+                <li>
+                  <!-- Genre dropdown starts-->
+                  <div>
+                    <div class="dropdown" style="position: relative; disPlay: inline-block; padding-top: 5px; padding-left: 15px;">
+                        <button class="btn text-white"  type="button" id="dropdownMenuButton" style="font-size:16px;margin-bottom: 6px;">
+                            Thể loại <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content" style="color: white;">
+                          <a href="action.html">Hành động</a>
+                          <a href="war.html">Chiến tranh</a>
+                          <a href="drama.html">Drama</a>
+                          <a href="suspense.html">Giật gân</a>
+                          <a href="romance.html">Tình cảm</a>
+                          <a href="anime.html">Hoạt hình</a>
+                          <a href="horror.html">Kinh dị</a>
+                          <a href="documentary.html">Lịch sử</a>
+                          <a href="fantasy.html">Khoa học viễn tưởng</a>
+                          <a href="comedy.html">Phim tâm lý</a>
+                        </div>
+                    </div>
+                  </div>
+                  <!-- Genre dropdown ends-->
+                </li>
+                <div style="position: relative; display: inline-block; padding-top: 5px; padding-left: 15px;">
+                  <li>
+                    <button  type="button" class="btn font-mulish btn-light" onclick="login()"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Đăng nhập</button>
+                  </li>
                 </div>
-              </div>
-              <!-- Genre dropdown ends-->
-            </li>
-            <div style="position: relative; display: inline-block; padding-top: 5px; padding-left: 15px;">
-            <li>
-              <button  type="button" class="btn btn-light" onclick="logout()">Logout</button>
-            </li>
+              </ul>
+              <form id="searchForm" class="d-flex" style=" justify-content: center;">
+                <input class="form-control me-2" type="text" id="searchText" placeholder="Tìm kiếm" aria-label="Search">
+                <button class="btn btn-danger" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+              </form>
+            </div>
           </div>
-          </ul>
-          <form id="searchForm" class="d-flex">
-            <input class="form-control me-2" type="text" id="searchText" placeholder="Search" aria-label="Search">
-            <button class="btn btn-danger" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
-      </nav>
+          </nav>
 
         <!-- navbar ends -->
 
-        <div class="maincontainer">
+        <div class="maincontainer" style="margin-top: 54px;">
             <div class="container">
                 <div id="movies" class="row"></div>
             </div>
             <hr>
-            <h2>Action</h2>
+            <h2>Hành động</h2>
             <hr>
             <div class="container" id="Movies">
               <div class="poster">
@@ -664,55 +703,61 @@ color:red;
     <div id="waterdrop"></div>
     <footer class="footer">
       <hr class="footer-hr">
-        <div class="footer-content">
-            <div class="footer-left">
-                <a href="home.html"><img class="footer-logo" src="Images/TheaterLogoFinal.png" alt="" width="30" height="24"></a>
-                <p class="footer-bottom-tagline">Watch! Chill! Repeat!</p>
-            </div>
-            <div class="footer-middle">
-                <h2 class="footer-heading">Follow Us</h2>
-                <ul class="footer-middle-list icons">
-                    <a class="footer-links" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f facebook" style="color:red"></i></a>
-                    <a class="footer-links" href="https://twitter.com/login?lang=en" target="_blank"><i class="fab fa-twitter twitter" style="color:red"></i></a>
-                    <a class="footer-links" href="https://www.linkedin.com/login" target="_blank"><i class="fab fa-linkedin linkedin" style="color:red"></i></a>
-                    <a class="footer-links" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram instagram" style="color:red"></i></a>
-                    <a class="footer-links" href="https://github.com/QAZIMAAZARSHAD/Movie-Streaming-Website" target="_blank"><i class="fab fa-github github" style="color:red"></i></a>
-                </ul>
-            </div>
-            <div class="footer-middle">
-                <h2 class="footer-heading">Services</h2>
-                <ul class="footer-middle-list">
-                    <li class="footer-middle-list-item"><a href="home.html">Enjoy Latest Movies</a> </li>
-                    <li class="footer-middle-list-item"><a href="web-series.html">Watch Web-Series</a> </li>
-                    <li class="footer-middle-list-item"><a href="kids.html">Everything for Kids</a> </li>
-                    <li class="footer-middle-list-item"><a href="news.html">Coming soon</a> </li>
-                    <li class="footer-middle-list-item"><a href="premium.html">Get Premium Subscription</a> </li>
-                    <li class="footer-middle-list-item"><a href="faq.html">FAQ</a> </li>
-                    
-                </ul>
-            </div>
-            <div class="footer-middle">
-                <h2 class="footer-heading">Try Our App</h2>
-                <ul class="footer-middle-list icons">
-                    <a class="footer-links" href="#"><i class="fab fa-google-play" style="color:red"></i></a>
-                    <a class="footer-links" href="#"><i class="fab fa-app-store-ios" style="color:red"></i></a>
-                </ul>
-            </div>
-            <div class="footer-right">
-                <p class="footer-links">
-                    <h2 class="footer-heading">Contact Us</h2>
-                    <p class="footer-bottom-tagline">Feel free to contact us.</p>
-                    <a class="footer-contact-button" href="contactus.html">Contact</a>
-                </p>
-            </div>
+      <div class="footer-content">
+        <div class="footer-left">
+          <a href="index.html"><img class="footer-logo" src="Design/LogoWebRedBlack-02.png" alt="" width="30"
+              height="24"></a>
+          <p class="footer-bottom-tagline">Xem và thật Chill</p>
         </div>
-        <hr class="footer-hr">
-        <div class="footer-copyright">
-            <p>Copyright &copy; and &reg; Since
-                <script>
-                    document.write(new Date().getFullYear())
-                </script> Under ApnaTheatre.com : (Project Is Done By Qazi Maaz Arshad)</p>
+        <div class="footer-middle">
+          <h2 class="footer-heading">Theo dõi chúng tớ</h2>
+          <ul class="footer-middle-list icons">
+            <a class="footer-links" href="https://www.facebook.com/" target="_blank"><i
+                class="fab fa-facebook-f facebook" style="color:#027CEB"></i></a>
+            <a class="footer-links" href="https://twitter.com/login?lang=en" target="_blank"><i
+                class="fab fa-twitter twitter" style="color:#2EA9EF"></i></a>
+            <a class="footer-links" href="https://www.linkedin.com/login" target="_blank"><i
+                class="fab fa-linkedin linkedin" style="color:#005F90"></i></a>
+            <a class="footer-links" href="https://www.instagram.com/" target="_blank"><i
+                class="fab fa-instagram instagram" style="color:#D72843"></i></a>
+            <a class="footer-links" href="https://github.com/QAZIMAAZARSHAD/Movie-Streaming-Website" target="_blank"><i
+                class="fab fa-github github" style="color:#2F2F2F"></i></a>
+          </ul>
         </div>
+        <div class="footer-middle">
+          <h2 class="footer-heading">Phim Hay Vai có gì</h2>
+          <ul class="footer-middle-list" style="padding-left: 0;">
+            <li class="footer-middle-list-item"><a href="index.html">Thưởng thức những bộ phim mới nhất</a> </li>
+            <li class="footer-middle-list-item"><a href="web-series.html">Xem các bộ phim dài tập chất lượng</a> </li>
+            <li class="footer-middle-list-item"><a href="kids.html">Có tất cả mọi thứ cho trẻ</a> </li>
+            <li class="footer-middle-list-item"><a href="news.html">Sắp ra mắt</a> </li>
+            <li class="footer-middle-list-item"><a href="premium.html">Gói đăng ký siêu cấp</a> </li>
+            <li class="footer-middle-list-item"><a href="faq.html">Hỏi & Đáp</a> </li>
+          </ul>
+        </div>
+       <div class="footer-middle">
+                <h2 class="footer-heading">Ứng dụng</h2>
+                <ul class="footer-middle-list icons">
+                    <a class="footer-links" href="#"><i class="fab fa-google-play" style="color:#59C3ED"></i></a>
+                    <a class="footer-links" href="#"><i class="fab fa-app-store-ios" style="color:#1899E9"></i></a>
+                </ul>
+            </div>
+        <div class="footer-right">
+          <p class="footer-links">
+          <h2 class="footer-heading">Liên hệ</h2>
+          <p class="footer-bottom-tagline">Hãy liên lạc nếu cần thiết </p>
+          <a class="footer-contact-button" href="contactus.html">Kết nối</a>
+          </p>
+        </div>
+      </div>
+      <hr class="footer-hr">
+      <div class="footer-copyright">
+        <p>Copyright &copy; and &reg; Since
+          <script>
+            document.write(new Date().getFullYear())
+          </script> phimhayvai.vn : (Dự án được thực hiện bởi Nhất - Vũ - Vỹ)
+        </p>
+      </div>
     </footer>
 
     <!----------------------Scroll to top button--------------------------------------------->
@@ -738,7 +783,7 @@ color:red;
   });
   </script>
     <script>
-      function logout(){
+      function login(){
         window.location.replace("login.html");
       }
     </script>
@@ -762,9 +807,9 @@ color:red;
      
 
   </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    <script src="./static/script.js"></script>
+ <!-- bootsstrap JS -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+ <script src="./static/script.js"></script>
 </body>
 
 </html>

@@ -4,24 +4,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>ApnaTheatre.com</title>
-    <link rel="shortcut icon" href="./Images/Logo/Title.jpeg" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>PHV | Khoa học viễn tưởng</title>
+    <link rel="shortcut icon" href="./Design/Netflix_icon.svg.png" type="image/x-icon">
+
+    <!-- fontawesome  6.0.0 -->
+  <link href="./fontawesome-free-6.4.0-web/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link href="./static/style.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Font  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <link href="./static/style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="static/bootstrap.min.css">
     <link rel="stylesheet" href="static/style-min.css">
     <link rel="stylesheet" href="cards.css">
+
+
 
 </head>
 
@@ -47,63 +50,47 @@ border-radius: 50%;
 background-color:white;
 color:red;
 }
-#header-nav .nav-link {
-  color: white;
-  font-size: 20px;
-  margin-left: 20px;
-}
-    @media only screen and (max-width: 1400px){
-  #header-nav .nav-link {
-    color: white;
-    font-size: 18px;
-    margin-left: 18px;
-  }
-  #searchText{
-    width: 150px;
-  }
-}
+#nav:hover
+{
+  background-color:#e60e23!important;
 
-@media only screen and (min-width: 1133px) and (max-width: 1275px) {
-  #header-nav .nav-link {
-    color: white;
-    font-size: 15px;
-    margin-left: 10px;
-  } 
-}
-@media only screen and (min-width: 1035px) and (max-width: 1132px) {
-  #header-nav .nav-link {
-    color: white;
-    font-size: 15px;
-    margin-left: 10px;
-  } 
-  #searchText{
-    width: 120px;
-  }
-  #submitBtn{
-    width: 60px;
-    display: flex;
-    justify-content: center;
-  }
-}
-@media only screen and (min-width: 993px) and (max-width: 1034px) {
-  #header-nav .nav-link {
-    color: white;
-    font-size: 14px;
-    margin-left: 10px;
-  } 
-
-#searchText{
-  width: 100px;
-}
-#submitBtn{
-  width: 50px;
-  display: flex;
-  justify-content: center;
-}
 }
 
 .container {
   text-align: center;
+}
+
+.layout_navbar__1COmD {
+    -webkit-transition: background-color .3s linear;
+    transition: background-color .3s linear
+}
+
+.layout_navbar__1COmD.layout_hasBg__1CDaI {
+    background-color: rgba(51,10,103,.93)
+}
+#header-nav {
+  z-index: 30;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  transition: background-color 0.5s;
+}
+@media only screen and (max-width: 990px) {
+  #header-nav {
+  z-index: 30;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #06121e99;
+  transition: background-color 0.5s;
+}
+}
+.navbar-nav{
+  display: flex;
+  align-items: center;
+  padding: 0px 7.5px;
 }
 .nav-item :hover{
   margin-bottom: 10px;
@@ -113,15 +100,31 @@ color:red;
   border-bottom-style: solid;
 }
 </style>
+<script>
+  setTimeout(function () {
+    $('.section').fadeToggle();
+  }, 4000);
+  
+  window.addEventListener('scroll', function() {
+  var myDiv = document.getElementById('header-nav');
+  var scrollPosition = window.scrollY;
 
-<body>
+  if (scrollPosition > 0) {
+    myDiv.classList.add('layout_hasBg__1CDaI');
+  } else {
+    myDiv.classList.remove('layout_hasBg__1CDaI');
+  }
+});
+</script>
+
+<body style="background-color: #06121E;">
     <div class="scroll-bar">
 
         <!-- navbar starts -->
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark" id="header-nav">
+        <nav class="navbar navbar-expand-lg navbar-light layout_navbar__1COmD" id="header-nav">
           <div class="container-fluid">
-            <a class="navbar-brand" href="home.html"><img class="logo" src="Images/TheaterLogoFinal.png" alt="" width="30"
+            <a class="navbar-brand" href="index.html"><img class="logo" src="./Design/LogoWebRedBlack-02.png" alt="" width="30"
                 height="24"></a>
             <button id="nav" class="navbar-toggler" id="nav" style="background-color:#8b0000" type="button" data-bs-toggle="collapse"
               data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -129,104 +132,96 @@ color:red;
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0 font_1em">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                  <a class="nav-link " href="movies.html" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Phim ngắn</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="movies.html">Movies</a>
+                  <a class="nav-link " href="web-series.html" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'" >Phim dài tập</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="web-series.html">Web Series</a>
+                  <a class="nav-link" href="kids.html" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Anime</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="kids.html">Kids</a>
+                  <a class="nav-link" href="tv.html"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">TV</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="tv.html">TV</a>
+                  <a class="nav-link" href="premium.html"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Gói vip</a>
                 </li>
+          
                 <li class="nav-item">
-                  <a class="nav-link" href="premium.html">Premium</a>
-                </li>
-              
-                <li class="nav-item">
-                  <a class="nav-link" href="contactus.html">Contact Us</a>
+                  <a class="nav-link" href="contactus.html"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Liên hệ</a>
                 </li>
                 <li>
                   <!-- Genre dropdown starts-->
                   <div>
-                    <div class="dropdown" style="position: relative; display: inline-block; padding-top: 5px; padding-left: 15px;">
-                        <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton" style="font-size:20px;">
-                            Genres
+                    <div class="dropdown" style="position: relative; disPlay: inline-block; padding-top: 5px; padding-left: 15px;">
+                        <button class="btn text-white"  type="button" id="dropdownMenuButton" style="font-size:16px;margin-bottom: 6px;">
+                            Thể loại <i class="fa-solid fa-chevron-down"></i>
                         </button>
                         <div class="dropdown-content" style="color: white;">
-                            <a href="popular.html">Popular</a>
-                            <a href="crime.html">Crime</a>
-                            <a href="suspense.html">Suspense & Thriller</a>
-                            <a href="action.html">Action</a>
-                            <a href="fantasy.html">Sci-Fi & Fantasy</a>
-                            <a href="documentary.html">Documentary</a>
-                            <a href="horror.html">Horror</a>
-                            <a href="drama.html">Drama</a>
-                            <a href="war.html">War & Politics</a>
-                            <a href="comedy.html">Comedy</a>
-                            <a href="romance.html">Romance</a>
-                            <a href="anime.html">Anime</a>
-                          </div>
+                          <a href="action.html">Hành động</a>
+                          <a href="war.html">Chiến tranh</a>
+                          <a href="drama.html">Drama</a>
+                          <a href="suspense.html">Giật gân</a>
+                          <a href="romance.html">Tình cảm</a>
+                          <a href="anime.html">Hoạt hình</a>
+                          <a href="horror.html">Kinh dị</a>
+                          <a href="documentary.html">Lịch sử</a>
+                          <a href="fantasy.html">Khoa học viễn tưởng</a>
+                          <a href="comedy.html">Phim tâm lý</a>
+                        </div>
                     </div>
                   </div>
                   <!-- Genre dropdown ends-->
                 </li>
                 <div style="position: relative; display: inline-block; padding-top: 5px; padding-left: 15px;">
                   <li>
-                    <button  type="button" class="btn btn-light" onclick="logout()">Logout</button>
+                    <button  type="button" class="btn font-mulish btn-light" onclick="login()"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Đăng nhập</button>
                   </li>
                 </div>
               </ul>
-              <form id="searchForm" class="d-flex">
-                <input class="form-control me-2" type="text" id="searchText" placeholder="Search" aria-label="Search">
-                <button class="btn btn-danger" type="submit">Search</button>
+              <form id="searchForm" class="d-flex" style=" justify-content: center;">
+                <input class="form-control me-2" type="text" id="searchText" placeholder="Tìm kiếm" aria-label="Search">
+                <button class="btn btn-danger" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
               </form>
             </div>
           </div>
           </nav>
-    
-            <!-- navbar ends -->
 
-        <div class="maincontainer">
+        <!-- navbar ends -->
+
+        <div class="maincontainer" style="margin-top: 54px;">
             <div class="container">
                 <div id="movies" class="row"></div>
             </div>
             <hr>
-            <h2>Sci-Fi & Fantasy</h2>
+            <h2>Khoa học -Viễn tưởng</h2>
             <hr>
             <div class="container" id="Movies">
               <div class="poster">
                 <div class="flip-card_i">
                   <div class="flip-card-inner_i">
                     <div class="flip-card-front_i">
-                        <img src="./Images/twilight.jpg" alt="Avatar" style="width:250px;height:360px;">
+                        <img src="./Images/got.jpg" alt="Avatar" style="width:250px;height:360px;">
                     </div>
                     <div class="flip-card-back_i">
-                      <h1 style="font-size: 30px;">Breaking Dawn</h1>
+                      <h1 style="font-size: 35px;">Game of Thrones</h1>
                         <button class="btn_i b3_i"  title="Year" style="color:white">2011</button>
-                        <button class="btn_i b2_i"  title="Movies" style="color:white">2</button>
-                        <button class="btn_i b1_i"  title="IMDb" style="color:white">4.9</button>
+                        <button class="btn_i b2_i"  title="Seasons" style="color:white">8</button>
+                        <button class="btn_i b1_i"  title="IMDb" style="color:white">9.2</button>
                       </span>
                       <br />
                       <br />
                     </p>
 
-                      <p class="para_i">
-                      After consummating her marriage with Edward, Bella realises that she
-                       has become pregnant with a child that is half-human, half-vampire.
-                       Further, the unborn child has many enemies in the outside world.</p>
+                      <p class="para_i">Nine noble families wage war against each other in order to gain control over the mythical land of Westeros.
+                         Meanwhile, a force is rising after millenniums and threatens the existence of living men.</p>
 
-                    
                           <button class="trailer_i" type="submit" value="" onclick="openWin()">▶Trailer</button>
                           <script type="text/javascript">
                             function openWin(){
-                              window.open("https://youtu.be/PQNLfo-SOR4","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                              window.open("https://youtu.be/gcTkNV5Vg1E","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
                             }
                           </script><br>
                         <br>
@@ -234,487 +229,470 @@ color:red;
 
                     </div>
                       <div class="flim">
-                          <b>Twilight: Breaking Dawn</b>
+                          <b>Game of Thrones</b>
                           <br>
-                          IMDb - 4.9
+                          IMDb - 9.2
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="poster">
+                <div class="flip-card_i">
+                  <div class="flip-card-inner_i">
+                    <div class="flip-card-front_i">
+                        <img src="./Images/zinda.jpg" alt="Avatar" style="width:250px;height:360px;">
+                    </div>
+                    <div class="flip-card-back_i">
+                      <h1>Zindabaad</h1>
+                        <button class="btn_i b3_i"  title="Year" style="color:white">2018</button>
+                        <button class="btn_i b2_i"  title="Seasons" style="color:white">1</button>
+                        <button class="btn_i b1_i"  title="IMDb" style="color:white">7.4</button>
+                      </span>
+                      <br />
+                      <br />
+                    </p>
+
+                      <p class="para_i">Zindabaad is a political - action thriller, jointly produced by Vikram Bhatt's VB on the web and Jio cinema</p>
+
+                     
+                          <button class="trailer_i" type="submit" value="" onclick="openWin1()">▶Trailer</button>
+                          <script type="text/javascript">
+                            function openWin1(){
+                              window.open("https://youtu.be/xIKkJk3qvjU","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                            }
+                          </script><br>
+                        <br>
+                        <button class="btn_i b4_i">▶Play</button>
+
+                    </div>
+                      <div class="flim">
+                          <b>Zindabaad</b>
+                          <br>
+                          IMDb - 7.4
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="poster">
+                <div class="flip-card_i">
+                  <div class="flip-card-inner_i">
+                    <div class="flip-card-front_i">
+                        <img src="./Images/vikings.jpg" alt="Avatar" style="width:250px;height:360px;">
+                    </div>
+                    <div class="flip-card-back_i">
+                      <h1>Vikings</h1>
+                        <button class="btn_i b3_i"  title="Year" style="color:white">2013</button>
+                        <button class="btn_i b2_i"  title="Seasons" style="color:white">5</button>
+                        <button class="btn_i b1_i"  title="IMDb" style="color:white">8.5</button>
+                      </span>
+                      <br />
+                      <br />
+                    </p>
+
+                      <p class="para_i">Ragnar Lothbrok, a legendary Norse hero, is a mere farmer who rises up to become a fearless warrior and commander of the Viking tribes with the support of his equally ferocious family.</p>
+
+                      
+                          <button class="trailer_i" type="submit" value="" onclick="openWin2()">▶Trailer</button>
+                          <script type="text/javascript">
+                            function openWin2(){
+                              window.open("https://youtu.be/9GgxinPwAGc","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                            }
+                          </script><br>
+                        <br>
+                        <button class="btn_i b4_i">▶Play</button>
+
+                    </div>
+                      <div class="flim">
+                          <b>Vikings</b>
+                          <br>
+                          IMDb - 8.5
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="poster">
+                <div class="flip-card_i">
+                  <div class="flip-card-inner_i">
+                    <div class="flip-card-front_i">
+                        <img src="./Images/gangs of wassepur.jpg" alt="Avatar" style="width:250px;height:360px;">
+                    </div>
+                    <div class="flip-card-back_i">
+                      <h1>Gangs of Wasseypur</h1>
+                        <button class="btn_i b3_i"  title="Year" style="color:white">2012</button>
+                        <button class="btn_i b2_i"  title="Minutes" style="color:white">2h40m</button>
+                        <button class="btn_i b1_i"  title="IMDb" style="color:white">8.2</button>
+                      </span>
+                      <br />
+                      <br />
+                    </p>
+
+                      <p class="para_i">Gangs of Wasseypur is a 2012 Indian two-part crime film produced and directed by Anurag Kashyap, and written by Kashyap and Zeishan Quadri.</p>
+
+                          <button class="trailer_i" type="submit" value="" onclick="openWin3()">▶Trailer</button>
+                          <script type="text/javascript">
+                            function openWin3(){
+                              window.open("https://youtu.be/j-AkWDkXcMY","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                            }
+                          </script><br>
+                        <br>
+                        <button class="btn_i b4_i">▶Play</button>
+
+                    </div>
+                      <div class="flim">
+                          <b>Gangs of Wasseypur</b>
+                          <br>
+                          IMDb - 8.2
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="poster">
+                <div class="flip-card_i">
+                  <div class="flip-card-inner_i">
+                    <div class="flip-card-front_i">
+                        <img src="./Images/arrow.jpg" alt="Avatar" style="width:250px;height:360px;">
+                    </div>
+                    <div class="flip-card-back_i">
+                      <h1>Arrow</h1>
+                        <button class="btn_i b3_i"  title="Year" style="color:white">2012</button>
+                        <button class="btn_i b2_i"  title="Seasons" style="color:white">8</button>
+                        <button class="btn_i b1_i"  title="IMDb" style="color:white">7.5</button>
+                      </span>
+                      <br />
+                      <br />
+                    </p>
+
+                      <p class="para_i">After mastering the skill of archery on a deserted island, multi-millionaire playboy Oliver Queen returns to his city to take on the vigilante persona of Arrow to fight crime and corruption.</p>
+
+                 
+                          <button class="trailer_i" type="submit" value="" onclick="openWin4()">▶Trailer</button>
+                          <script type="text/javascript">
+                            function openWin4(){
+                              window.open("https://youtu.be/ofzPONG8hDU","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                            }
+                          </script><br>
+                        <br>
+                        <button class="btn_i b4_i">▶Play</button>
+
+                    </div>
+                      <div class="flim">
+                          <b>Arrow</b>
+                          <br>
+                          IMDb - 7.5
                       </div>
                   </div>
                 </div>
               </div>
 
 
-                <div class="poster">
-                  <div class="flip-card_i">
-                    <div class="flip-card-inner_i">
-                      <div class="flip-card-front_i">
-                          <img src="./Images/inter.jpg" alt="Avatar" style="width:250px;height:360px;">
-                      </div>
-                      <div class="flip-card-back_i">
-                        <h1>Interstellar</h1>
-                          <button class="btn_i b3_i"  title="Year" style="color:white">2014</button>
-                          <button class="btn_i b2_i"  title="Minutes" style="color:white">2h49m</button>
-                          <button class="btn_i b1_i"  title="IMDb" style="color:white">8.6</button>
-                        </span>
-                        <br />
-                        <br />
-                      </p>
-
-                        <p class="para_i">When Earth becomes uninhabitable in the future, a farmer
-                           and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.</p>
-
-                         
-                          <button class="trailer_i" type="submit" value="" onclick="openWin1()">▶Trailer</button>
-                          <script type="text/javascript">
-                            function openWin1(){
-                              window.open("https://www.imdb.com/video/vi1586278169?playlistId=tt0816692&ref_=tt_ov_vi","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                            }
-                          </script><br>
-                          <br>
-                        <button class="btn_i b4_i">▶Play</button>
-
-                      </div>
-                        <div class="flim">
-                            <b>Interstellar</b>
-                            <br>
-                            IMDb - 8.6
-                        </div>
+              <div class="poster">
+                <div class="flip-card_i">
+                  <div class="flip-card-inner_i">
+                    <div class="flip-card-front_i">
+                        <img src="./Images/apharan.jpg" alt="Avatar" style="width:250px;height:360px;">
                     </div>
-                  </div>
-                </div>
+                    <div class="flip-card-back_i">
+                      <h1>Apharan</h1>
+                        <button class="btn_i b3_i"  title="Year" style="color:white">2018</button>
+                        <button class="btn_i b2_i"  title="Seasons" style="color:white">1</button>
+                        <button class="btn_i b1_i"  title="IMDb" style="color:white">8.3</button>
+                      </span>
+                      <br />
+                      <br />
+                    </p>
 
-
-                <div class="poster">
-                  <div class="flip-card_i">
-                    <div class="flip-card-inner_i">
-                      <div class="flip-card-front_i">
-                          <img src="./Images/gravity.jpg" alt="Avatar" style="width:250px;height:360px;">
-                      </div>
-                      <div class="flip-card-back_i">
-                        <h1>Gravity</h1>
-                          <button class="btn_i b3_i"  title="Year" style="color:white">2013</button>
-                          <button class="btn_i b2_i"  title="Seasons" style="color:white">1h31m</button>
-                          <button class="btn_i b1_i"  title="IMDb" style="color:white">7.7</button>
-                        </span>
-                        <br />
-                        <br />
-                      </p>
-
-                        <p class="para_i">Two astronauts work together
-                          to survive after an accident leaves them stranded in space.</p>
-
-                          
-                            <button class="trailer_i" type="submit" value="" onclick="openWin2()">▶Trailer</button>
-                            <script type="text/javascript">
-                              function openWin2(){
-                                window.open("https://www.imdb.com/video/vi2340006169?playlistId=tt1454468","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                              }
-                            </script><br>
-                          <br>
-                        <button class="btn_i b4_i">▶Play</button>
-
-                      </div>
-                        <div class="flim">
-                            <b>Gravity</b>
-                            <br>
-                            IMDb - 7.7
-                        </div>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="poster">
-                  <div class="flip-card_i">
-                    <div class="flip-card-inner_i">
-                      <div class="flip-card-front_i">
-                          <img src="./Images/stranger.jpg" alt="Avatar" style="width:250px;height:360px;">
-                      </div>
-                      <div class="flip-card-back_i">
-                        <h1>Stranger Things</h1>
-                          <button class="btn_i b3_i"  title="Year" style="color:white">2016</button>
-                          <button class="btn_i b2_i"  title="Seasons" style="color:white">3</button>
-                          <button class="btn_i b1_i"  title="IMDb" style="color:white">8.7</button>
-                        </span>
-                        <br />
-                        <br />
-                      </p>
-
-                        <p class="para_i">When a young boy disappears, his mother, a police chief and his friends
-                          must confront terrifying supernatural forces in order to get him back.</p>
-
-                            <button class="trailer_i" type="submit" value="" onclick="openWin3()">▶Trailer</button>
-                            <script type="text/javascript">
-                              function openWin3(){
-                                window.open("https://www.imdb.com/video/vi2480390169?playlistId=tt4574334","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                              }
-                            </script><br><br>
-                          <button class="btn_i b4_i">▶Play</button>
-
-                      </div>
-                        <div class="flim">
-                            <b>Stranger Things</b>
-                            <br>
-                            IMDb - 8.7
-                        </div>
-                    </div>
-                  </div>
-                </div>
-
-
-
-                <div class="poster">
-                  <div class="flip-card_i">
-                    <div class="flip-card-inner_i">
-                      <div class="flip-card-front_i">
-                          <img src="./Images/kong.jpg" alt="Avatar" style="width:250px;height:360px;">
-                      </div>
-                      <div class="flip-card-back_i">
-                        <h1>Godzilla vs Kong</h1>
-                          <button class="btn_i b3_i"  title="Year" style="color:white">2021</button>
-                          <button class="btn_i b2_i"  title="Time" style="color:white">1h53m</button>
-                          <button class="btn_i b1_i"  title="IMDb" style="color:white">6.4</button>
-                        </span>
-                        <br />
-                        <br />
-                      </p>
-
-                        <p class="para_i">The epic next chapter in the cinematic Monsterverse pits two of the greatest icons in motion picture history against one another - the
-                           fearsome Godzilla and the mighty Kong - with humanity caught in the balance.</p>
-
-                              
-                            <button class="trailer_i" type="submit" value="" onclick="openWin4()">▶Trailer</button>
-                            <script type="text/javascript">
-                              function openWin4(){
-                                window.open("https://www.imdb.com/video/vi576962841?playlistId=tt5034838","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                              }
-                            </script><br>
-                          <br>
-                        <button class="btn_i b4_i">▶Play</button>
-                      </div>
-                        <div class="flim">
-                            <b>Godzilla vs Kong</b>
-                            <br>
-                            IMDb - 6.4
-                        </div>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="poster">
-                  <div class="flip-card_i">
-                    <div class="flip-card-inner_i">
-                      <div class="flip-card-front_i">
-                          <img src="./Images/harry.jpg" alt="Avatar" style="width:250px;height:360px;">
-                      </div>
-                      <div class="flip-card-back_i">
-                        <h1>Harry Potter Series</h1>
-                          <button class="btn_i b3_i"  title="Year" style="color:white">2001</button>
-                          <button class="btn_i b2_i"  title="Seasons" style="color:white">7</button>
-                          <button class="btn_i b1_i"  title="IMDb" style="color:white">7.6</button>
-                        </span>
-                        <br />
-                        <br />
-                      </p>
-
-                        <p class="para_i">An orphaned boy enrolls in a school of wizardry, where he learns the truth about
-                          himself, his family and the terrible evil that haunts the magical world.</p>
-
-                         
-                                
-                            <button class="trailer_i" type="submit" value="" onclick="openWin5()">▶Trailer</button>
-                            <script type="text/javascript">
-                              function openWin5(){
-                                window.open("https://www.imdb.com/title/tt0241527/?ref_=fn_al_tt_1","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                              }
-                            </script><br><br>
-                          <button class="btn_i b4_i">▶Play</button>
-
-                      </div>
-                        <div class="flim">
-                            <b>Harry Potter Series</b>
-                            <br>
-                            IMDb - 7.6
-                        </div>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="poster">
-                  <div class="flip-card_i">
-                    <div class="flip-card-inner_i">
-                      <div class="flip-card-front_i">
-                          <img src="./Images/wanda.jpg" alt="Avatar" style="width:250px;height:360px;">
-                      </div>
-                      <div class="flip-card-back_i">
-                        <h1>Wanda Vision</h1>
-                          <button class="btn_i b3_i"  title="Year" style="color:white">2021</button>
-                          <button class="btn_i b2_i"  title="Seasons" style="color:white">1</button>
-                          <button class="btn_i b1_i"  title="IMDb" style="color:white">8</button>
-                        </span>
-                        <br />
-                        <br />
-                      </p>
-
-                        <p class="para_i">Blends the style of classic sitcoms with the MCU, in which Wanda Maximoff and Vision - two super-powered beings living their
-                           ideal suburban lives - begin to suspect that everything is not as it seems.</p>
-
-                     
-                            <button class="trailer_i" type="submit" value="" onclick="openWin6()">▶Trailer</button>
-                            <script type="text/javascript">
-                              function openWin6(){
-                                window.open("https://www.imdb.com/video/vi3485450265?playlistId=tt9140560","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                              }
-                            </script><br><br>
-                          <button class="btn_i b4_i">▶Play</button>
-
-                      </div>
-                        <div class="flim">
-                            <b>Wanda Vision</b>
-                            <br>
-                            IMDb - 8
-                        </div>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="poster">
-                  <div class="flip-card_i">
-                    <div class="flip-card-inner_i">
-                      <div class="flip-card-front_i">
-                          <img src="./Images/tenet.jpg" alt="Avatar" style="width:250px;height:360px;">
-                      </div>
-                      <div class="flip-card-back_i">
-                        <h1>Tenet</h1>
-                          <button class="btn_i b3_i"  title="Year" style="color:white">2020</button>
-                          <button class="btn_i b2_i"  title="Time" style="color:white">2h30m</button>
-                          <button class="btn_i b1_i"  title="IMDb" style="color:white">7.4</button>
-                        </span>
-                        <br />
-                        <br />
-                      </p>
-
-                        <p class="para_i">Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international
-                           espionage on a mission that will unfold in something beyond real time.</p>
-
-                         
-                            <button class="trailer_i" type="submit" value="" onclick="openWin7()">▶Trailer</button>
-                            <script type="text/javascript">
-                              function openWin7(){
-                                window.open("https://www.imdb.com/video/vi2051194393?playlistId=tt6723592","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                              }
-                            </script><br><br>
-                          <button class="btn_i b4_i">▶Play</button>
-
-                      </div>
-                        <div class="flim">
-                            <b>Tenet</b>
-                            <br>
-                            IMDb - 7.4
-                        </div>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="poster">
-                  <div class="flip-card_i">
-                    <div class="flip-card-inner_i">
-                      <div class="flip-card-front_i">
-                          <img src="./Images/witcher.jpg" alt="Avatar" style="width:250px;height:360px;">
-                      </div>
-                      <div class="flip-card-back_i">
-                        <h1>The Witcher</h1>
-                          <button class="btn_i b3_i"  title="Year" style="color:white">2019</button>
-                          <button class="btn_i b2_i"  title="Seasons" style="color:white">2</button>
-                          <button class="btn_i b1_i"  title="IMDb" style="color:white">8.2</button>
-                        </span>
-                        <br />
-                        <br />
-                      </p>
-
-                        <p class="para_i">Geralt of Rivia, a solitary monster hunter, struggles to find
-                          his place in a world where people often prove more wicked than beasts.</p>
-
-                            <button class="trailer_i" type="submit" value="" onclick="openWin8()">▶Trailer</button>
-                            <script type="text/javascript">
-                              function openWin8(){
-                                window.open("https://www.imdb.com/video/vi840285977?playlistId=tt5180504","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                              }
-                            </script><br><br>
-                          <button class="btn_i b4_i">▶Play</button>
-
-                      </div>
-                        <div class="flim">
-                            <b>The Witcher</b>
-                            <br>
-                            IMDb - 8.2
-                        </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="poster">
-                  <div class="flip-card_i">
-                    <div class="flip-card-inner_i">
-                      <div class="flip-card-front_i">
-                          <img src="./Images/narnia.jpg" alt="Avatar" style="width:250px;height:360px;">
-                      </div>
-                      <div class="flip-card-back_i">
-                        <h1 style="font-size: 30px;">The Chronicles of Narnia</h1>
-                          <button class="btn_i b3_i"  title="Year" style="color:white">2005</button>
-                          <button class="btn_i b2_i"  title="Seasons" style="color:white">3</button>
-                          <button class="btn_i b1_i"  title="IMDb" style="color:white">6.9</button>
-                        </span>
-                        <br />
-                        <br />
-                      </p>
-
-                        <p class="para_i">Four children get trapped in an unearthed land called Narnia,
-                          in order to go back home, they must face dark forces and beasts.</p>
-
-                         
-                            <button class="trailer_i" type="submit" value="" onclick="openWin9()">▶Trailer</button>
-                            <script type="text/javascript">
-                              function openWin9(){
-                                window.open("https://www.imdb.com/video/vi3727140377?playlistId=tt0363771","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                              }
-                            </script><br><br>
-                          <button class="btn_i b4_i">▶Play</button>
-
-                      </div>
-                        <div class="flim">
-                            <b>The Chronicles of Narnia</b>
-                            <br>
-                            IMDb - 6.9
-                        </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="poster">
-                  <div class="flip-card_i">
-                    <div class="flip-card-inner_i">
-                      <div class="flip-card-front_i">
-                          <img src="./Images/spider.jpg" alt="Avatar" style="width:250px;height:360px;">
-                      </div>
-                      <div class="flip-card-back_i">
-                        <h1>Spiderman</h1>
-                          <button class="btn_i b3_i"  title="Year" style="color:white">2002</button>
-                          <button class="btn_i b2_i"  title="Time" style="color:white">2h1m</button>
-                          <button class="btn_i b1_i"  title="IMDb" style="color:white">7.3</button>
-                        </span>
-                        <br />
-                        <br />
-                      </p>
-
-                        <p class="para_i">Peter Parker's life changes when he is bitten by a genetically altered spider and gains superpowers. 
-                            He uses his powers to help people and finds himself facing the Green Goblin, an evil maniac.</p>
-
-                         
-                              
-                            <button class="trailer_i" type="submit" value="" onclick="openWin10()">▶Trailer</button>
-                            <script type="text/javascript">
-                              function openWin10(){
-                                window.open("https://www.imdb.com/video/vi422553113?playlistId=tt0145487","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                              }
-                            </script><br><br>
-                          <button class="btn_i b4_i">▶Play</button>
-
-                      </div>
-                        <div class="flim">
-                            <b>Spiderman</b>
-                            <br>
-                            IMDb - 7.3
-                        </div>
-                    </div>
-                  </div>
-                </div>
-
-
-
-
-                <div class="poster">
-                  <div class="flip-card_i">
-                    <div class="flip-card-inner_i">
-                      <div class="flip-card-front_i">
-                          <img src="./Images/flash.jpg" alt="Avatar" style="width:250px;height:360px;">
-                      </div>
-                      <div class="flip-card-back_i">
-                        <h1>The Flash</h1>
-                          <button class="btn_i b3_i"  title="Year" style="color:white">2014</button>
-                          <button class="btn_i b2_i"  title="Seasons" style="color:white">7</button>
-                          <button class="btn_i b1_i"  title="IMDb" style="color:white">7.6</button>
-                        </span>
-                        <br />
-                        <br />
-                      </p>
-
-                        <p class="para_i">After being struck by lightning, Barry Allen wakes up from his coma to discover he's been given the
-                           power of super speed, becoming the next Flash, fighting crime in Central City.</p>
+                      <p class="para_i">Rudra, a senior inspector, is lured into kidnapping a young girl at the behest of her mother</p>
 
                 
-                            <button class="trailer_i" type="submit" value="" onclick="openWin11()">▶Trailer</button>
-                            <script type="text/javascript">
-                              function openWin11(){
-                                window.open("https://www.imdb.com/video/vi3478176025?playlistId=tt3107288","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                              }
-                            </script><br><br>
-                          <button class="btn_i b4_i">▶Play</button>
-
-                      </div>
-                        <div class="flim">
-                            <b>The Flash</b>
-                            <br>
-                            IMDb - 7.6
-                        </div>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="poster">
-                  <div class="flip-card_i">
-                    <div class="flip-card-inner_i">
-                      <div class="flip-card-front_i">
-                          <img src="./Images/lord.jpg" alt="Avatar" style="width:250px;height:360px;">
-                      </div>
-                      <div class="flip-card-back_i">
-                        <h1>Lord of Rings</h1>
-                          <button class="btn_i b3_i"  title="Year" style="color:white">2001</button>
-                          <button class="btn_i b2_i"  title="Parts" style="color:white">3</button>
-                          <button class="btn_i b1_i"  title="IMDb" style="color:white">8.8</button>
-                        </span>
-                        <br />
-                        <br />
-                      </p>
-
-                        <p class="para_i">A meek Hobbit from the Shire and eight companions set out on a journey to destroy
-                           the powerful One Ring and save Middle-earth from the Dark Lord Sauron.</p>
-
-                          
-                              
-                            <button class="trailer_i" type="submit" value="" onclick="openWin12()">▶Trailer</button>
-                            <script type="text/javascript">
-                              function openWin12(){
-                                window.open("https://www.imdb.com/video/vi2073101337?playlistId=tt0120737","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                              }
-                            </script><br>
-                          <br>
+                          <button class="trailer_i" type="submit" value="" onclick="openWin5()">▶Trailer</button>
+                          <script type="text/javascript">
+                            function openWin5(){
+                              window.open("https://youtu.be/CxNYucYVEkQ","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                            }
+                          </script><br>
+                        <br>
                         <button class="btn_i b4_i">▶Play</button>
 
-                      </div>
-                        <div class="flim">
-                            <b>The Lord of the Rings</b>
-                            <br>
-                            IMDb - 8.8
-                        </div>
                     </div>
+                      <div class="flim">
+                          <b>Apharan</b>
+                          <br>
+                          IMDb - 8.3
+                      </div>
                   </div>
                 </div>
+              </div>
 
+
+              <div class="poster">
+                <div class="flip-card_i">
+                  <div class="flip-card-inner_i">
+                    <div class="flip-card-front_i">
+                        <img src="./Images/war.jpg" alt="Avatar" style="width:250px;height:360px;">
+                    </div>
+                    <div class="flip-card-back_i">
+                      <h1>War</h1>
+                        <button class="btn_i b3_i"  title="Year" style="color:white">2019</button>
+                        <button class="btn_i b2_i"  title="Minutes" style="color:white">2h34m</button>
+                        <button class="btn_i b1_i"  title="IMDb" style="color:white">6.5</button>
+                      </span>
+                      <br />
+                      <br />
+                    </p>
+
+                      <p class="para_i">Kabir, a secret agent, goes rogue after a mission to catch a terrorist goes awry. However, his boss sends Khalid, another agent and his student, to track him down.</p>
+
+            
+                          <button class="trailer_i" type="submit" value="" onclick="openWin6()">▶Trailer</button>
+                          <script type="text/javascript">
+                            function openWin6(){
+                              window.open("https://youtu.be/tQ0mzXRk-oM","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                            }
+                          </script><br>
+                        <br>
+                        <button class="btn_i b4_i">▶Play</button>
+
+                    </div>
+                      <div class="flim">
+                          <b>War</b>
+                          <br>
+                          IMDb - 6.5
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="poster">
+                <div class="flip-card_i">
+                  <div class="flip-card-inner_i">
+                    <div class="flip-card-front_i">
+                        <img src="./Images/kgf.jpg" alt="Avatar" style="width:250px;height:360px;">
+                    </div>
+                    <div class="flip-card-back_i">
+                      <h1>KGF</h1>
+                        <button class="btn_i b3_i"  title="Year" style="color:white">2018</button>
+                        <button class="btn_i b2_i"  title="Minutes" style="color:white">2h50m</button>
+                        <button class="btn_i b1_i"  title="IMDb" style="color:white">8.3</button>
+                      </span>
+                      <br />
+                      <br />
+                    </p>
+
+                      <p class="para_i">Rocky, a young man, seeks power and wealth in order to fulfil a promise to his dying mother. His quest takes him to Mumbai, where he gets involved with the notorious gold mafia.</p>
+
+                     
+                          <button class="trailer_i" type="submit" value="" onclick="openWin7()">▶Trailer</button>
+                          <script type="text/javascript">
+                            function openWin7(){
+                              window.open("https://youtu.be/-KfsY-qwBS0","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                            }
+                          </script><br>
+                        <br>
+                        <button class="btn_i b4_i">▶Play</button>
+
+                    </div>
+                      <div class="flim">
+                          <b>KGF</b>
+                          <br>
+                          IMDb - 8.3
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="poster">
+                <div class="flip-card_i">
+                  <div class="flip-card-inner_i">
+                    <div class="flip-card-front_i">
+                        <img src="./Images/django.jpg" alt="Avatar" style="width:250px;height:360px;">
+                    </div>
+                    <div class="flip-card-back_i">
+                      <h1>Django Unchained</h1>
+                        <button class="btn_i b3_i"  title="Year" style="color:white">2012</button>
+                        <button class="btn_i b2_i"  title="Minutes" style="color:white">2h45m</button>
+                        <button class="btn_i b1_i"  title="IMDb" style="color:white">8.4</button>
+                      </span>
+                      <br />
+                      <br />
+                    </p>
+
+                      <p class="para_i">When Django, a slave, is freed, he joins forces with a bounty hunter to rescue his wife, who has been enslaved by Calvin, a hard-hearted plantation owner.</p>
+
+                       
+                          <button class="trailer_i" type="submit" value="" onclick="openWin8()">▶Trailer</button>
+                          <script type="text/javascript">
+                            function openWin8(){
+                              window.open("https://youtu.be/_iH0UBYDI4g","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                            }
+                          </script><br>
+                        <br>
+                        <button class="btn_i b4_i">▶Play</button>
+
+                    </div>
+                      <div class="flim">
+                          <b>Django Unchained</b>
+                          <br>
+                          IMDb -8.4
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="poster">
+                <div class="flip-card_i">
+                  <div class="flip-card-inner_i">
+                    <div class="flip-card-front_i">
+                        <img src="./Images/endgame.jpg" alt="Avatar" style="width:250px;height:360px;">
+                    </div>
+                    <div class="flip-card-back_i">
+                      <h1>Avengers : Endgame</h1>
+                        <button class="btn_i b3_i"  title="Year" style="color:white">2019</button>
+                        <button class="btn_i b2_i"  title="Minutes" style="color:white">3h2m</button>
+                        <button class="btn_i b1_i"  title="IMDb" style="color:white">8.4</button>
+                      </span>
+                      <br />
+                      <br />
+                    </p>
+
+                      <p class="para_i">After Thanos, an intergalactic warlord, disintegrates half of the universe, the Avengers must reunite and assemble again to reinvigorate their trounced allies and restore balance.</p>
+
+                          <button class="trailer_i" type="submit" value="" onclick="openWin9()">▶Trailer</button>
+                          <script type="text/javascript">
+                            function openWin9(){
+                              window.open("https://youtu.be/TcMBFSGVi1c","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                            }
+                          </script><br>
+                        <br>
+                        <button class="btn_i b4_i">▶Play</button>
+
+                    </div>
+                      <div class="flim">
+                          <b>Avengers : Endgame</b>
+                          <br>
+                          IMDb - 8.4
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="poster">
+                <div class="flip-card_i">
+                  <div class="flip-card-inner_i">
+                    <div class="flip-card-front_i">
+                        <img src="./Images/infinity.jpg" alt="Avatar" style="width:250px;height:360px;">
+                    </div>
+                    <div class="flip-card-back_i">
+                      <h1>Avengers : Infinity War</h1>
+                        <button class="btn_i b3_i"  title="Year" style="color:white">2018</button>
+                        <button class="btn_i b2_i"  title="Minutes" style="color:white">2h40m<button>
+                        <button class="btn_i b1_i"  title="IMDb" style="color:white">8.4</button>
+                      </span>
+                      <br />
+                      <br />
+                    </p>
+
+                      <p class="para_i">The Avengers must stop Thanos, an intergalactic warlord, from getting his hands on all the infinity stones. However, Thanos is prepared to go to any lengths to carry out his insane plan.</p>
+
+                          <button class="trailer_i" type="submit" value="" onclick="openWin10()">▶Trailer</button>
+                          <script type="text/javascript">
+                            function openWin10(){
+                              window.open("https://youtu.be/6ZfuNTqbHE8","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                            }
+                          </script><br>
+                        <br>
+                        <button class="btn_i b4_i">▶Play</button>
+
+                    </div>
+                      <div class="flim">
+                          <b>Avengers : Infinity War</b>
+                          <br>
+                          IMDb - 8.4
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="poster">
+                <div class="flip-card_i">
+                  <div class="flip-card-inner_i">
+                    <div class="flip-card-front_i">
+                        <img src="./Images/ter.jpg" alt="Avatar" style="width:250px;height:360px;">
+                    </div>
+                    <div class="flip-card-back_i">
+                      <h1>Terminator Series</h1>
+                        <button class="btn_i b3_i"  title="Year" style="color:white">1984</button>
+                        <button class="btn_i b2_i"  title="Minutes" style="color:white">1h48m</button>
+                        <button class="btn_i b1_i"  title="IMDb" style="color:white">8.0</button>
+                      </span>
+                      <br />
+                      <br />
+                    </p>
+
+                      <p class="para_i">A cyborg assassin is sent back in time to kill Sarah, a waitress, in a bid to stop her son who will wage a long war against his enemy in the future unless the course of history is altered.</p>
+
+                          <button class="trailer_i" type="submit" value="" onclick="openWin11()">▶Trailer</button>
+                          <script type="text/javascript">
+                            function openWin11(){
+                              window.open("https://youtu.be/k64P4l2Wmeg","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                            }
+                          </script><br>
+                        <br>
+                        <button class="btn_i b4_i">▶Play</button>
+
+                    </div>
+                      <div class="flim">
+                          <b>Terminator Series</b>
+                          <br>
+                          IMDb - 8.0
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="poster">
+                <div class="flip-card_i">
+                  <div class="flip-card-inner_i">
+                    <div class="flip-card-front_i">
+                        <img src="./Images/star.jpg" alt="Avatar" style="width:250px;height:360px;">
+                    </div>
+                    <div class="flip-card-back_i">
+                      <h1>Star Wars Series</h1>
+                        <button class="btn_i b3_i"  title="Year" style="color:white">1977</button>
+                        <button class="btn_i b2_i"  title="Minutes" style="color:white">2h5m</button>
+                        <button class="btn_i b1_i"  title="IMDb" style="color:white">8.6</button>
+                      </span>
+                      <br />
+                      <br />
+                    </p>
+
+                      <p class="para_i">After Princess Leia, the leader of the Rebel Alliance, is held hostage by Darth Vader, Luke and Han Solo must free her and destroy the powerful weapon created by the Galactic Empire.</p>
+
+             
+                          <button class="trailer_i" type="submit" value="" onclick="openWin12()">▶Trailer</button>
+                          <script type="text/javascript">
+                            function openWin12(){
+                              window.open("https://youtu.be/vZ734NWnAHA","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                            }
+                          </script><br>
+                        <br>
+                        <button class="btn_i b4_i">▶Play</button>
+
+                    </div>
+                      <div class="flim">
+                          <b>Star Wars Series</b>
+                          <br>
+                          IMDb - 8.6
+                      </div>
+                  </div>
+                </div>
+              </div>
             </div>
         </div>
     </div>
@@ -725,83 +703,91 @@ color:red;
     <div id="waterdrop"></div>
     <footer class="footer">
       <hr class="footer-hr">
-        <div class="footer-content">
-            <div class="footer-left">
-                <a href="home.html"><img class="footer-logo" src="Images/TheaterLogoFinal.png" alt="" width="30" height="24"></a>
-                <p class="footer-bottom-tagline">Watch! Chill! Repeat!</p>
-            </div>
-            <div class="footer-middle">
-                <h2 class="footer-heading">Follow Us</h2>
-                <ul class="footer-middle-list icons">
-                    <a class="footer-links" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f facebook" style="color:red"></i></a>
-                    <a class="footer-links" href="https://twitter.com/login?lang=en" target="_blank"><i class="fab fa-twitter twitter" style="color:red"></i></a>
-                    <a class="footer-links" href="https://www.linkedin.com/login" target="_blank"><i class="fab fa-linkedin linkedin" style="color:red"></i></a>
-                    <a class="footer-links" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram instagram" style="color:red"></i></a>
-                    <a class="footer-links" href="https://github.com/QAZIMAAZARSHAD/Movie-Streaming-Website" target="_blank"><i class="fab fa-github github" style="color:red"></i></a>
-                </ul>
-            </div>
-            <div class="footer-middle">
-                <h2 class="footer-heading">Services</h2>
-                <ul class="footer-middle-list">
-                    <li class="footer-middle-list-item"><a href="home.html">Enjoy Latest Movies</a> </li>
-                    <li class="footer-middle-list-item"><a href="web-series.html">Watch Web-Series</a> </li>
-                    <li class="footer-middle-list-item"><a href="kids.html">Everything for Kids</a> </li>
-                    <li class="footer-middle-list-item"><a href="news.html">Coming soon</a> </li>
-                    <li class="footer-middle-list-item"><a href="premium.html">Get Premium Subscription</a> </li>
-                    <li class="footer-middle-list-item"><a href="faq.html">FAQ</a> </li>
-                </ul>
-            </div>
-            <div class="footer-middle">
-                <h2 class="footer-heading">Try Our App</h2>
-                <ul class="footer-middle-list icons">
-                    <a class="footer-links" href="#"><i class="fab fa-google-play" style="color:red"></i></a>
-                    <a class="footer-links" href="#"><i class="fab fa-app-store-ios" style="color:red"></i></a>
-                </ul>
-            </div>
-            <div class="footer-right">
-                <p class="footer-links">
-                    <h2 class="footer-heading">Contact Us</h2>
-                    <p class="footer-bottom-tagline">Feel free to contact us.</p>
-                    <a class="footer-contact-button" href="contactus.html">Contact</a>
-                </p>
-            </div>
+      <div class="footer-content">
+        <div class="footer-left">
+          <a href="index.html"><img class="footer-logo" src="Design/LogoWebRedBlack-02.png" alt="" width="30"
+              height="24"></a>
+          <p class="footer-bottom-tagline">Xem và thật Chill</p>
         </div>
-        <hr class="footer-hr">
-        <div class="footer-copyright">
-            <p>Copyright &copy; and &reg; Since
-                <script>
-                    document.write(new Date().getFullYear())
-                </script> Under ApnaTheatre.com : (Project Is Done By Qazi Maaz Arshad)</p>
+        <div class="footer-middle">
+          <h2 class="footer-heading">Theo dõi chúng tớ</h2>
+          <ul class="footer-middle-list icons">
+            <a class="footer-links" href="https://www.facebook.com/" target="_blank"><i
+                class="fab fa-facebook-f facebook" style="color:#027CEB"></i></a>
+            <a class="footer-links" href="https://twitter.com/login?lang=en" target="_blank"><i
+                class="fab fa-twitter twitter" style="color:#2EA9EF"></i></a>
+            <a class="footer-links" href="https://www.linkedin.com/login" target="_blank"><i
+                class="fab fa-linkedin linkedin" style="color:#005F90"></i></a>
+            <a class="footer-links" href="https://www.instagram.com/" target="_blank"><i
+                class="fab fa-instagram instagram" style="color:#D72843"></i></a>
+            <a class="footer-links" href="https://github.com/QAZIMAAZARSHAD/Movie-Streaming-Website" target="_blank"><i
+                class="fab fa-github github" style="color:#2F2F2F"></i></a>
+          </ul>
         </div>
+        <div class="footer-middle">
+          <h2 class="footer-heading">Phim Hay Vai có gì</h2>
+          <ul class="footer-middle-list" style="padding-left: 0;">
+            <li class="footer-middle-list-item"><a href="index.html">Thưởng thức những bộ phim mới nhất</a> </li>
+            <li class="footer-middle-list-item"><a href="web-series.html">Xem các bộ phim dài tập chất lượng</a> </li>
+            <li class="footer-middle-list-item"><a href="kids.html">Có tất cả mọi thứ cho trẻ</a> </li>
+            <li class="footer-middle-list-item"><a href="news.html">Sắp ra mắt</a> </li>
+            <li class="footer-middle-list-item"><a href="premium.html">Gói đăng ký siêu cấp</a> </li>
+            <li class="footer-middle-list-item"><a href="faq.html">Hỏi & Đáp</a> </li>
+          </ul>
+        </div>
+       <div class="footer-middle">
+                <h2 class="footer-heading">Ứng dụng</h2>
+                <ul class="footer-middle-list icons">
+                    <a class="footer-links" href="#"><i class="fab fa-google-play" style="color:#59C3ED"></i></a>
+                    <a class="footer-links" href="#"><i class="fab fa-app-store-ios" style="color:#1899E9"></i></a>
+                </ul>
+            </div>
+        <div class="footer-right">
+          <p class="footer-links">
+          <h2 class="footer-heading">Liên hệ</h2>
+          <p class="footer-bottom-tagline">Hãy liên lạc nếu cần thiết </p>
+          <a class="footer-contact-button" href="contactus.html">Kết nối</a>
+          </p>
+        </div>
+      </div>
+      <hr class="footer-hr">
+      <div class="footer-copyright">
+        <p>Copyright &copy; and &reg; Since
+          <script>
+            document.write(new Date().getFullYear())
+          </script> phimhayvai.vn : (Dự án được thực hiện bởi Nhất - Vũ - Vỹ)
+        </p>
+      </div>
     </footer>
 
-    <!----------------------scroll back to top button----->
+    <!----------------------Scroll to top button--------------------------------------------->
     <button  id="scrollToTopButton" title="Go to top" class="ml-5" >
-        <i class="fa fa-angle-double-up" aria-hidden="true"></i>
-      </button>
-      <script>
-      $(document).ready(function(){
-        var scrollTopButton = document.getElementById("scrollToTopButton");
-        window.onscroll = function () { scrollFunction() };
+      <i class="fa fa-angle-double-up" aria-hidden="true" ></i>
+  </button>
+  <script>
+    $(document).ready(function(){
+      var scrollTopButton = document.getElementById("scrollToTopButton");
+      // window.onscroll = function () { scrollFunction() };
 
-        function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-          scrollTopButton.style.display = "block";
-        } else {
-          scrollTopButton.style.display = "none";
-        }
-      }
+    //   function scrollFunction() {
+    //   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    //     scrollTopButton.style.display = "block";
+    //   } else {
+    //     scrollTopButton.style.display = "none";
+    //   }
+    // }
 
-      $("#scrollToTopButton").click(function(){
-      $('html ,body').animate({scrollTop : 0},800)
-      });
-      });
-      </script>
-<script>
-  function logout(){
-    window.location.replace("login.html");
-  }
+    $("#scrollToTopButton").click(function(){
+    $('html ,body').animate({scrollTop : 0},800)
+  });
+  });
   </script>
+    <script>
+      function login(){
+        window.location.replace("login.html");
+      }
+    </script>
+
     <!-- offcanva JS and footer js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -818,9 +804,12 @@ color:red;
             frequency: 20
         });
     </script>
+     
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    <script src="./static/script.js"></script>
+  </script>
+ <!-- bootsstrap JS -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+ <script src="./static/script.js"></script>
 </body>
 
 </html>
