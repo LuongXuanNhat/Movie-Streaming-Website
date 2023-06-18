@@ -196,38 +196,18 @@
                         Thể loại <i class="fa-solid fa-chevron-down"></i>
                     </button>
                     <div class="dropdown-content" style="color: white;">
-                        <a href="action.html" onclick="searchByCategory(this)">Hành động</a>
-                        <a href="war.html">Chiến tranh</a>
-                        <a href="drama.html">Drama</a>
-                        <a href="suspense.html">Giật gân</a>
-                        <a href="romance.html">Tình cảm</a>
+                        <a href="action.html" >Hành động</a>
+                        <a href="war.html" >Chiến tranh</a>
+                        <a href="drama.html" >Drama</a>
+                        <a href="suspense.html" >Giật gân</a>
+                        <a href="romance.html" >Tình cảm</a>
                         <a href="anime.html">Hoạt hình</a>
-                        <a href="horror.html">Kinh dị</a>
-                        <a href="documentary.html">Lịch sử</a>
-                        <a href="fantasy.html">Khoa học viễn tưởng</a>
-                        <a href="comedy.html">Phim tâm lý</a>
-                      </div>
-                      <script>
-                        function searchByCategory(element) {
-                        const text = element.innerText;
-                        
-                        fetch(`http://localhost:8080/API/phims/search?theloai=${text}`)
-                        .then(response => response.json())
-                        .then(data => {
-                          // Xử lý dữ liệu phim lấy được
-                          searchParams.append('searchResults', JSON.stringify(data));
-
-                           // Lấy URL của view mới từ thuộc tính href của thẻ <a>
-                          const url = element.getAttribute('href');
-
-                          // Chuyển đến view mới
-                          window.location.href = url;
-                        })
-                        .catch(error => {
-                          console.error('Lỗi khi lấy danh sách phim:', error);
-                        });
-                      }
-                      </script>
+                        <a href="horror.html" >Kinh dị</a>
+                        <a href="documentary.html" >Lịch sử</a>
+                        <a href="fantasy.html" >Khoa học viễn tưởng</a>
+                        <a href="comedy.html" >Phim tâm lý</a>
+                    </div>
+                    
                 </div>
               </div>
               <!-- Genre dropdown ends-->
@@ -245,22 +225,10 @@
           <script>
             function searchMovies() {
               const searchText = document.getElementById('searchText').value;
-
-              // Gửi yêu cầu tìm kiếm phim đến controller API
-              fetch(`http://localhost:8080/API/phims/search?keyword=${searchText}`)
-                .then(response => response.json())
-                .then(data => {
-                  // Chuyển đến view search.html và truyền dữ liệu phim và từ khóa tìm kiếm qua URL
-                  const searchParams = new URLSearchParams();
-                  searchParams.append('keyword', searchText);
-                  searchParams.append('searchResults', JSON.stringify(data));
-                  const currentUrl = new URL('search.html', window.location.origin);
-                  currentUrl.search = searchParams.toString();
-                  window.location.href = currentUrl.href;
-                })
-                .catch(error => {
-                  console.error('Lỗi khi tìm kiếm phim:', error);
-                });
+              const searchParams = new URLSearchParams();
+              searchParams.append('searchResults', searchText);
+              
+              window.location.href = 'search.html?' + searchParams.toString();
             }
           </script>
 
@@ -451,74 +419,53 @@
         <div class="slide_track">
 
           <div class="slide">
-            <img src="./Images/apharan.jpg" alt="" />
-          </div>
-
-          <div class="slide">
-            <img src="./Images/bat.jpg" alt="" />
+            <img src="./Design/Standee/110731CineP08.webp" alt="" />
           </div>
           <div class="slide">
-            <img src="./Images/breaking.jpg" alt="" />
+            <img src="./Design/Standee/3514519618914928508906037510242992754524160n-15289650052061446990598.webp" alt="" />
           </div>
           <div class="slide">
-            <img src="./Images/criminal.jpg" alt="" />
+            <img src="./Design/Standee/4155_nguoi-can-quen-phai-nho.png" alt="" />
           </div>
           <div class="slide">
-            <img src="./Images/got.jpg" alt="" />
+            <img src="./Design/Standee/9-1679472680372340511308.jpeg" alt="" />
           </div>
           <div class="slide">
-            <img src="./Images/infinity.jpg" alt="" />
+            <img src="./Design/Standee/addh.jpg" alt="" />
           </div>
           <div class="slide">
-            <img src="./Images/kota.jpg" alt="" />
+            <img src="./Design/Standee/bogia-teaser1.jpg" alt="" />
           </div>
           <div class="slide">
-            <img src="./Images/mirzapur.jpg" alt="" />
+            <img src="./Design/Standee/fireheart-main-poster-sneak-show-1-20230531145752.jpg" alt="" />
           </div>
           <div class="slide">
-            <img src="./Images/sacred.jpg" alt="" />
+            <img src="./Design/Standee/hoatjd6.jpg" alt="" />
           </div>
           <div class="slide">
-            <img src="./Images/scam.jpg" alt="" />
-          </div>
-
-
-          <div class="slide">
-            <img src="./Images/apharan.jpg" alt="" />
-          </div>
-
-          <div class="slide">
-            <img src="./Images/bat.jpg" alt="" />
+            <img src="./Design/Standee/shin-223353.jpg" alt="" />
           </div>
           <div class="slide">
-            <img src="./Images/breaking.jpg" alt="" />
+            <img src="./Design/Standee/ThichTuTruongGiang1_2020011014540.jpg" alt="" />
           </div>
           <div class="slide">
-            <img src="./Images/criminal.jpg" alt="" />
+            <img src="./Design/Standee/t413830.jpg" alt="" />
           </div>
           <div class="slide">
-            <img src="./Images/got.jpg" alt="" />
+            <img src="./Design/Standee/tsbdc6fpsh69zn851li9ynel73qqutrf.jpg" alt="" />
           </div>
           <div class="slide">
-            <img src="./Images/infinity.jpg" alt="" />
+            <img src="./Design/Standee/110731CineP08.webp" alt="" />
           </div>
           <div class="slide">
-            <img src="./Images/kota.jpg" alt="" />
+            <img src="./Design/Standee/3514519618914928508906037510242992754524160n-15289650052061446990598.webp" alt="" />
           </div>
           <div class="slide">
-            <img src="./Images/mirzapur.jpg" alt="" />
+            <img src="./Design/Standee/4155_nguoi-can-quen-phai-nho.png" alt="" />
           </div>
           <div class="slide">
-            <img src="./Images/sacred.jpg" alt="" />
+            <img src="./Design/Standee/9-1679472680372340511308.jpeg" alt="" />
           </div>
-          <div class="slide">
-            <img src="./Images/scam.jpg" alt="" />
-          </div>
-
-
-
-
-
         </div>
 
       </div>
@@ -584,17 +531,9 @@
             }
           
             function openMovieDetail(idphim) {
-              fetch(`http://localhost:8080/API/movies/${idphim}`)
-                .then(response => response.json())
-                .then(data => {
-                  // Xử lý dữ liệu nhận được từ API
-                  console.log(data);
-                  // Ví dụ: Hiển thị thông tin phim trong một view khác
-                  navigateToMovieDetail(data);
-                })
-                .catch(error => {
-                  console.error('Lỗi khi lấy dữ liệu phim:', error);
-                });
+              const searchParams = new URLSearchParams();
+              searchParams.append('searchResults', idphim);
+              window.location.href = 'movie-min.html?' + searchParams.toString();
             }
             function navigateToMovieDetail(movieData) {
               // Chuyển đến view mới
@@ -606,456 +545,7 @@
           </script>
       </div>
       
-      <div class="container" id="Movies">
-        <div class="title-nav online">Phim đề cử</div>
-         <div class="poster">
-          <div class="flip-card_i">
-            <div class="flip-card-inner_i">
-              <div class="flip-card-front_i">
-                  <img src="./Images/inception.jpg" alt="Avatar" style="width:250px;height:360px;">
-              </div>
-              <div class="flip-card-back_i">
-                <!-- Tên phim -->
-                <h1>Inception</h1>
-                  <p>Thời lượng: 2h</p>
-                <!-- Mô tả -->
-                <p class="para_i">Kiểm tra lại cấu hình đường dẫn ảnh: Xác minh lại cấu hình đường dẫn ảnh trong mã backend của bạn. Đảm bảo rằng đường dẫn được cấu hình đúng và trùng khớp với đường dẫn mà bạn sử dụng trong mã font-end.</p>
-                <br/>
-                  <!--<form action="https://youtu.be/YoHD9XEInc0&t=17s"> -->
-                      
-                      <button class="trailer_i" type="submit" value="" onclick="openWin()">▶Trailer</button>
-                        <script type="text/javascript">
-                          function openWin(){
-                            window.open("https://youtu.be/YoHD9XEInc0&t=17s","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                          }
-                        </script>
-                 <!-- </form> -->
-                  <br>
-                  <br>
-                  <button class="btn_i b4_i" onclick="openMovieWin()">▶Play</button>
-                  <script type="text/javascript">
-                    function openMovieWin(){
-                      window.open("https://youtu.be/wcS_awzEYuk","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                    }
-                  </script>
-              </div>
-            </div>
-            <div class="flim">
-              <b>Inception</b><br>IMDb - 8.8
-            </div>
-          </div>
-        </div> 
-        
-        <div class="poster">
-          <div class="flip-card_i">
-            <div class="flip-card-inner_i">
-              <div class="flip-card-front_i">
-                  <img src="./Images/dark knight.jpg" alt="Avatar" style="width:250px;height:360px;">
-              </div>
-              <div class="flip-card-back_i">
-                <h1 style="font-size: 30px;">The Dark Knight</h1>
-                  <button class="btn_i b3_i"  title="Year" style="color:white">2008</button>
-                  <button class="btn_i b2_i"  title="Minutes" style="color:white">2h32m<button>
-                  <button class="btn_i b1_i"  title="IMDb" style="color:white">9.0</button>
-                </span>
-                <br />
-                <br />
-              </p>
-
-                <p class="para_i">After Gordon, Dent and Batman begin an assault on Gotham's organised crime, the mobs hire the Joker, a psychopathic criminal mastermind who offers to kill Batman and bring the city to its knees.</p>
-
-                  
-                    <button class="trailer_i" type="submit" value="" onclick="openWin1()">▶Trailer</button>
-                    <script type="text/javascript">
-                      function openWin1(){
-                        window.open("https://youtu.be/LDG9bisJEaI","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                      }
-                    </script>
-                  <br><br>
-                  <button class="btn_i b4_i">▶Play</button>
-
-              </div>
-                
-            </div>
-            <div class="flim">
-              <b>The Dark Knight</b><br>IMDb - 9.0
-          </div>
-          </div>
-        </div> 
-
-        <div class="poster">
-          <div class="flip-card_i">
-            <div class="flip-card-inner_i">
-              <div class="flip-card-front_i">
-                  <img src="./Images/Parasite.jpg" alt="Avatar" style="width:250px;height:360px;">
-              </div>
-              <div class="flip-card-back_i">
-                <h1>Parasite</h1>
-                  <button class="btn_i b3_i"  title="Year" style="color:white">2019</button>
-                  <button class="btn_i b2_i"  title="Minutes" style="color:white">2h12m<button>
-                  <button class="btn_i b1_i"  title="IMDb" style="color:white">8.6</button>
-                </span>
-                <br />
-                <br />
-              </p>
-
-                <p class="para_i">The struggling Kim family sees an opportunity when the son starts working for the wealthy Park family. Soon, all of them find a way to work within the same household and start living a parasitic life.</p>
-
-                    <button class="trailer_i" type="submit" value="" onclick="openWin2()">▶Trailer</button>
-                    <script type="text/javascript">
-                      function openWin2(){
-                        window.open("https://youtu.be/SEUXfv87Wpk","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                      }
-                    </script><br><br>
-                  <button class="btn_i b4_i">▶Play</button>
-
-              </div>
-            </div>
-            <div class="flim">
-              <b>Parasite</b><br>IMDb - 8.6
-            </div>
-          </div>
-        </div> 
-
-        <div class="poster">
-          <div class="flip-card_i">
-            <div class="flip-card-inner_i">
-              <div class="flip-card-front_i">
-                  <img src="./Images/We're_the_Millers_poster.jpg" alt="Avatar" style="width:250px;height:360px;">
-              </div>
-              <div class="flip-card-back_i">
-                <h1>We're the Millers</h1>
-                  <button class="btn_i b3_i"  title="Year" style="color:white">2013</button>
-                  <button class="btn_i b2_i"  title="Seasons" style="color:white">1h58m</button>
-                  <button class="btn_i b1_i"  title="IMDb" style="color:white">7.0</button>
-                </span>
-                <br />
-                <br />
-              </p>
-
-                <p class="para_i">David, a drug dealer, is forced by his boss to smuggle drugs from Mexico. He hires a stripper, a petty thief and a teenage neighbour and forms a fake family to help him smuggle the drugs.</p>
-
-                    <button class="trailer_i" type="submit" value="" onclick="openWin3()">▶Trailer</button>
-                    <script type="text/javascript">
-                      function openWin3(){
-                        window.open("https://youtu.be/0Vsy5KzsieQ","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                      }
-                    </script><br><br>
-                  <button class="btn_i b4_i">▶Play</button>
-
-              </div>
-            </div>
-            <div class="flim">
-              <b>We're the Millers</b>
-              <br>
-              IMDb - 7.0
-            </div>
-          </div>
-        </div> 
-
-        <div class="poster">
-          <div class="flip-card_i">
-            <div class="flip-card-inner_i">
-              <div class="flip-card-front_i">
-                  <img src="./Images/the terminal.jpg" alt="Avatar" style="width:250px;height:360px;">
-              </div>
-              <div class="flip-card-back_i">
-                <h1>The Terminal</h1>
-                  <button class="btn_i b3_i"  title="Year" style="color:white">2004</button>
-                  <button class="btn_i b2_i"  title="Minutes" style="color:white">2h8m<button>
-                  <button class="btn_i b1_i"  title="IMDb" style="color:white">7.4</button>
-                </span>
-                <br />
-                <br />
-              </p>
-
-                <p class="para_i">Viktor Navorski gets stranded at an airport when a war rages in his country. He is forced by the officials to stay at the airport until his original identity is confirmed.</p>
-
-                 
-                    <button class="trailer_i" type="submit" value="" onclick="openWin4()">▶Trailer</button>
-                    <script type="text/javascript">
-                      function openWin4(){
-                        window.open("https://youtu.be/hjydAG1lG_8","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                      }
-                    </script><br><br>
-                  <button class="btn_i b4_i" onclick="openMovieWin4()">▶Play</button>
-
-                  <script type="text/javascript">
-                    function openMovieWin4(){
-                      window.open("https://youtu.be/ozmOG2RxxFw","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                    }
-                  </script>
-              </div>
-            </div>
-            <div class="flim">
-              <b>The Terminal</b>
-              <br>
-              IMDb - 7.4
-            </div>
-          </div>
-        </div> 
-
-        <div class="poster">
-          <div class="flip-card_i">
-            <div class="flip-card-inner_i">
-              <div class="flip-card-front_i">
-                  <img src="./Images/Matrix.jpg" alt="Avatar" style="width:250px;height:360px;">
-              </div>
-              <div class="flip-card-back_i">
-                <h1>The Matrix</h1>
-                  <button class="btn_i b3_i"  title="Year" style="color:white">1999</button>
-                  <button class="btn_i b2_i"  title="Minutes" style="color:white">2h16m<button>
-                  <button class="btn_i b1_i"  title="IMDb" style="color:white">8.7</button>
-                </span>
-                <br />
-                <br />
-              </p>
-
-                <p class="para_i">Thomas Anderson, a computer programmer, is led to fight an underground war against powerful computers who have constructed his entire reality with a system called the Matrix.</p>
-
-                 
-                    <button class="trailer_i" type="submit" value="" onclick="openWin5()">▶Trailer</button>
-                    <script type="text/javascript">
-                      function openWin5(){
-                        window.open("https://youtu.be/8xx91zoASLY","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                      }
-                    </script><br><br>
-                  <button class="btn_i b4_i">▶Play</button>
-
-              </div>
-            </div>
-            <div class="flim">
-              <b>The Matrix</b>
-              <br>
-              IMDb - 8.7
-             </div>
-          </div>
-        </div> 
-
-        <div class="poster">
-          <div class="flip-card_i">
-            <div class="flip-card-inner_i">
-              <div class="flip-card-front_i">
-                  <img src="./Images/joker.jpg" alt="Avatar" style="width:250px;height:360px;">
-              </div>
-              <div class="flip-card-back_i">
-                <h1>Joker</h1>
-                  <button class="btn_i b3_i"  title="Year" style="color:white">2019</button>
-                  <button class="btn_i b2_i"  title="Minutes" style="color:white">2h2m<button>
-                  <button class="btn_i b1_i"  title="IMDb" style="color:white">8.4</button>
-                </span>
-                <br />
-                <br />
-              </p>
-
-                <p class="para_i">Arthur Fleck, a party clown, leads an impoverished life with his ailing mother. However, when society shuns him and brands him as a freak, he decides to embrace the life of crime and chaos.</p>
-
-                    <button class="trailer_i" type="submit" value="" onclick="openWin6()">▶Trailer</button>
-                    <script type="text/javascript">
-                      function openWin6(){
-                        window.open("https://www.youtube.com/watch?v=zAGVQLHvwOY","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                      }
-                    </script><br><br>
-                  <button class="btn_i b4_i">▶Play</button>
-
-              </div>
-            </div>
-            <div class="flim">
-              <b>Joker</b><br>IMDb - 8.4
-            </div>
-          </div>
-        </div> 
-
-        <div class="poster">
-          <div class="flip-card_i">
-            <div class="flip-card-inner_i">
-              <div class="flip-card-front_i">
-                  <img src="./Images/Hamilton.jpg" alt="Avatar" style="width:250px;height:360px;">
-              </div>
-              <div class="flip-card-back_i">
-                <h1>Hamilton</h1>
-                  <button class="btn_i b3_i"  title="Year" style="color:white">2020</button>
-                  <button class="btn_i b2_i"  title="Minutes" style="color:white">2h40m<button>
-                  <button class="btn_i b1_i"  title="IMDb" style="color:white">8.4</button>
-                </span>
-                <br />
-                <br />
-              </p>
-
-                <p class="para_i">Alexander Hamilton, an orphan, arrives in New York to work for George Washington. After the American Revolution, he goes on to become first Secretary of the Treasury of the US.</p>
-
-                    <button class="trailer_i" type="submit" value="" onclick="openWin7()">▶Trailer</button>
-                    <script type="text/javascript">
-                      function openWin7(){
-                        window.open("https://youtu.be/DSCKfXpAGHc","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                      }
-                    </script><br><br>
-                  <button class="btn_i b4_i">▶Play</button>
-
-              </div>
-            </div>
-            <div class="flim">
-              <b>Hamilton</b>
-              <br>
-              IMDb - 8.4
-            </div>
-          </div>
-        </div> 
-
-        <div class="poster">
-          <div class="flip-card_i">
-            <div class="flip-card-inner_i">
-              <div class="flip-card-front_i">
-                  <img src="./Images/goodfellas.jpg" alt="Avatar" style="width:250px;height:360px;">
-              </div>
-              <div class="flip-card-back_i">
-                <h1>GoodFellas</h1>
-                  <button class="btn_i b3_i"  title="Year" style="color:white">1990</button>
-                  <button class="btn_i b2_i"  title="Minutes" style="color:white">2h28m<button>
-                  <button class="btn_i b1_i"  title="IMDb" style="color:white">8.7</button>
-                </span>
-                <br />
-                <br />
-              </p>
-
-                <p class="para_i">Young Henry Hill, with his friends Jimmy and Tommy, begins the climb from being a petty criminal to a gangster on the mean streets of New York.</p>
-
-                    <button class="trailer_i" type="submit" value="" onclick="openWin8()">▶Trailer</button>
-                    <script type="text/javascript">
-                      function openWin8(){
-                        window.open("https://www.youtube.com/watch?v=qo5jJpHtI1Y","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                      }
-                    </script><br><br>
-                  <button class="btn_i b4_i">▶Play</button>
-
-              </div>
-            </div>
-            <div class="flim">
-              <b>GoodFellas</b>
-              <br>
-              IMDb - 8.7
-            </div>
-          </div>
-        </div> 
-
-        <div class="poster">
-          <div class="flip-card_i">
-            <div class="flip-card-inner_i">
-              <div class="flip-card-front_i">
-                  <img src="./Images/the shawshank.jpg" alt="Avatar" style="width:250px;height:360px;">
-              </div>
-              <div class="flip-card-back_i">
-                <h1 style="font-size: 30px;">The Shawshank Redemption</h1>
-                  <button class="btn_i b3_i"  title="Year" style="color:white">1994</button>
-                  <button class="btn_i b2_i"  title="Minutes" style="color:white">2h22m<button>
-                  <button class="btn_i b1_i"  title="IMDb" style="color:white">9.3</button>
-                </span>
-                <br />
-                <br />
-              </p>
-
-                <p class="para_i" style="margin-top: -20px;">Andy Dufresne, a successful banker, is arrested for the murders of his wife and her lover, and is sentenced to life imprisonment at the Shawshank prison. He becomes the most unconventional prisoner.</p>
-
-                    <button class="trailer_i" type="submit" value="" onclick="openWin9()">▶Trailer</button>
-                    <script type="text/javascript">
-                      function openWin9(){
-                        window.open("https://youtu.be/6hB3S9bIaco","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                      }
-                    </script><br><br>
-                  <button class="btn_i b4_i" onclick="openMovieWin9()">▶Play</button>
-                  
-                  <script type="text/javascript">
-                    function openMovieWin9(){
-                      window.open("https://youtu.be/MoLEo-HUGOk","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                    }
-                  </script>
-              </div>
-            </div>
-            <div class="flim">
-              <b>The Shawshank Redemption</b>
-              <br>
-              IMDb - 9.3
-          </div>
-          </div>
-        </div> 
-
-        <div class="poster">
-          <div class="flip-card_i">
-            <div class="flip-card-inner_i">
-              <div class="flip-card-front_i">
-                  <img src="./Images/green mile.jpg" alt="Avatar" style="width:250px;height:360px;">
-              </div>
-              <div class="flip-card-back_i">
-                <h1>The Green Mile</h1>
-                  <button class="btn_i b3_i"  title="Year" style="color:white">1999</button>
-                  <button class="btn_i b2_i"  title="Minutes" style="color:white">3h9m<button>
-                  <button class="btn_i b1_i"  title="IMDb" style="color:white">8.6</button>
-                </span>
-                <br />
-                <br />
-              </p>
-
-                <p class="para_i">Paul, the head guard of a prison, meets an inmate, John, an African American who is accused of murdering two girls. His life changes drastically when he discovers that John has a special gift.</p>
-                      
-                    <button class="trailer_i" type="submit" value="" onclick="openWin10()">▶Trailer</button>
-                    <script type="text/javascript">
-                      function openWin10(){
-                        window.open("https://youtu.be/Ki4haFrqSrw","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                      }
-                    </script><br><br>
-                  <button class="btn_i b4_i">▶Play</button>
-
-              </div>
-            </div>
-            <div class="flim">
-              <b>The Green Mile</b>
-              <br>
-              IMDb - 8.6
-          </div>
-          </div>
-        </div> 
-
-        <div class="poster">
-          <div class="flip-card_i">
-            <div class="flip-card-inner_i">
-              <div class="flip-card-front_i">
-                  <img src="./Images/inter.jpg" alt="Avatar" style="width:250px;height:360px;">
-              </div>
-              <div class="flip-card-back_i">
-                <h1>Interstellar</h1>
-                  <button class="btn_i b3_i"  title="Year" style="color:white">2014</button>
-                  <button class="btn_i b2_i"  title="Minutes" style="color:white">2h55m<button>
-                  <button class="btn_i b1_i"  title="IMDb" style="color:white">8.6</button>
-                </span>
-                <br />
-                <br />
-              </p>
-
-                <p class="para_i">When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.</p>
-
-                    <button class="trailer_i" type="submit" value="" onclick="openWin11()">▶Trailer</button>
-                    <script type="text/javascript">
-                      function openWin11(){
-                        window.open("https://youtu.be/zSWdZVtXT7E","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                      }
-                    </script><br><br>
-                  <button class="btn_i b4_i" onclick="openMovieWin11()">▶Play</button>
-                  
-                  <script type="text/javascript">
-                    function openMovieWin11(){
-                      window.open("https://youtu.be/It9-pm9JOSk","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-                    }
-                  </script>
-              </div>
-            </div>
-            <div class="flim">
-              <b>Interstellar</b>
-              <br>
-              IMDb - 8.6
-            </div>
-          </div>
-        </div> 
-      </div>
+     
 <hr>
 <div class="container" id="Movies">
         <div class="title-nav online">Phim lẻ</div>

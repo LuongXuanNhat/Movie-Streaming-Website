@@ -185,25 +185,13 @@ color:red;
                 <input class="form-control me-2" type="text" id="searchText" placeholder="Tìm kiếm" aria-label="Search">
                 <button class="btn btn-danger" type="submit" onclick="searchMovies()"><i class="fa-solid fa-magnifying-glass"></i></button>
               </form>
-              <script>
+              <script> 
                 function searchMovies() {
                   const searchText = document.getElementById('searchText').value;
-    
-                  // Gửi yêu cầu tìm kiếm phim đến controller API
-                  fetch(`http://localhost:8080/API/phims/search?keyword=${searchText}`)
-                    .then(response => response.json())
-                    .then(data => {
-                      // Chuyển đến view search.html và truyền dữ liệu phim và từ khóa tìm kiếm qua URL
-                      const searchParams = new URLSearchParams();
-                      searchParams.append('keyword', searchText);
-                      searchParams.append('searchResults', JSON.stringify(data));
-                      const currentUrl = new URL('search.html', window.location.origin);
-                      currentUrl.search = searchParams.toString();
-                      window.location.href = currentUrl.href;
-                    })
-                    .catch(error => {
-                      console.error('Lỗi khi tìm kiếm phim:', error);
-                    });
+                  const searchParams = new URLSearchParams();
+                  searchParams.append('searchResults', searchText);
+                  
+                  window.location.href = 'search.html?' + searchParams.toString();
                 }
               </script>
             </div>
@@ -213,13 +201,93 @@ color:red;
         <!-- navbar ends -->
 
         <div class="maincontainer" style="margin-top: 54px;">
-            <div class="container">
-                <div id="movies" class="row"></div>
+          <h2 class="p-5">Kinh dị</h2>  
+          <div class="container">
+                <div id="movies" class="row">
+
+                </div>
             </div>
-            <hr>
-            <h2>Kinh dị</h2>
-            <hr>
+            
             <div class="container" id="Movies">
+              <script>
+                function displaySearchResults() {
+                  const text = "Kinh dị";
+                  fetch(`http://localhost:8080/API/phims/search?theloai=${text}`)
+                    .then(response => response.json())
+                    .then(data => {
+                      if (data) {
+                        const srcImg = "http://localhost:8080/photos/phims/";
+                        const movieListElement = document.getElementById('movies');
+
+                        data.forEach(item => {
+                          const ngaySanXuat = item.ngaysanxuat;
+                          const imgId = item.idphim + "/";
+                          const year = ngaySanXuat.substring(0, 4);
+                          const movieCard = document.createElement('div');
+                          movieCard.classList.add('col-md-3');
+                          movieCard.innerHTML = `
+                            <div class="poster">
+                              <div class="flip-card_i">
+                                <div class="flip-card-inner_i">
+                                  <div class="flip-card-front_i">
+                                    <img src="${srcImg+imgId+item.hinhanh}" alt="Avatar" style="width:250px;height:360px;object-fit: cover;">
+                                  </div>
+                                  <div class="flip-card-back_i">
+                                    <h5 class="p-2">${item.tenphim}</h5>
+                                    <p>Thời lượng: ${item.thoiluong} phút</p>
+                                    <p class="para_i text-content-movie">${item.noidungphim}</p>
+                                    <br/>
+                                    <button class="trailer_i" type="submit" value="" onclick="openWin('${item.trailer}')">▶ Trailer</button>
+                                    <br>
+                                    <br>
+                                    <button class="btn_i b4_i" onclick="openMovieDetail('${item.idphim}')">▶ Xem</button>
+                                  </div>
+                                </div>
+                                <div class="flim">
+                                  <b>${item.tenphim}</b><br>IMDB - ${item.diemIMDB}
+                                </div>
+                              </div>
+                            </div>
+                          `;
+
+                          movieListElement.appendChild(movieCard);
+                        });
+                      }
+                    });
+                }
+
+                // Gọi hàm displaySearchResults() khi view search.html được tải
+                displaySearchResults();
+
+              
+                function openWin(trailerLink) {
+                  window.open(trailerLink, "_blank", "top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                }
+              
+                function openMovieDetail(idphim) {
+                  fetch(`http://localhost:8080/API/movies/${idphim}`)
+                    .then(response => response.json())
+                    .then(data => {
+                      // Xử lý dữ liệu nhận được từ API
+                      console.log(data);
+                      // Ví dụ: Hiển thị thông tin phim trong một view khác
+                      navigateToMovieDetail(data);
+                    })
+                    .catch(error => {
+                      console.error('Lỗi khi lấy dữ liệu phim:', error);
+                    });
+                }
+                function navigateToMovieDetail(movieData) {
+                  // Chuyển đến view mới
+                  window.location.href = 'path/to/movie-detail-view.html';
+    
+                  // Lưu dữ liệu phim vào Local Storage để sử dụng trong view mới
+                  localStorage.setItem('movieData', JSON.stringify(movieData));
+                }
+              </script>
+              
+             </div>
+            <!-- <div class="container" id="Movies">
               <div class="poster">
                 <div class="flip-card_i">
                   <div class="flip-card-inner_i">
@@ -714,7 +782,7 @@ color:red;
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
         </div>
     </div>
 

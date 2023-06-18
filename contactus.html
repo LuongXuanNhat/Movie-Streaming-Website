@@ -256,24 +256,12 @@
           </form>
           <script>
             function searchMovies() {
-              const searchText = document.getElementById('searchText').value;
-
-              // Gửi yêu cầu tìm kiếm phim đến controller API
-              fetch(`http://localhost:8080/API/phims/search?keyword=${searchText}`)
-                .then(response => response.json())
-                .then(data => {
-                  // Chuyển đến view search.html và truyền dữ liệu phim và từ khóa tìm kiếm qua URL
+                  const searchText = document.getElementById('searchText').value;
                   const searchParams = new URLSearchParams();
-                  searchParams.append('keyword', searchText);
-                  searchParams.append('searchResults', JSON.stringify(data));
-                  const currentUrl = new URL('search.html', window.location.origin);
-                  currentUrl.search = searchParams.toString();
-                  window.location.href = currentUrl.href;
-                })
-                .catch(error => {
-                  console.error('Lỗi khi tìm kiếm phim:', error);
-                });
-            }
+                  searchParams.append('searchResults', searchText);
+                  
+                  window.location.href = 'search.html?' + searchParams.toString();
+                }
           </script>
         </div>
       </div>

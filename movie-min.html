@@ -168,7 +168,7 @@ font-family:cursive;
 margin-bottom:25px;
 }
 .detail_card {
-    width: 17em;
+    width: 20em;
 }
 
 .footer-copyright{
@@ -256,7 +256,10 @@ margin-left: 20px;
   margin-left: 18px;
 }
 }
-
+.actor-img-movie-css > img{
+  border-radius: 50%;
+  width: 7em;
+}
 @media only screen and (min-width: 1133px) and (max-width: 1275px) {
 #header-nav .nav-link {
   color: white;
@@ -388,24 +391,12 @@ justify-content: center;
           </form>
           <script>
             function searchMovies() {
-              const searchText = document.getElementById('searchText').value;
-
-              // Gửi yêu cầu tìm kiếm phim đến controller API
-              fetch(`http://localhost:8080/API/phims/search?keyword=${searchText}`)
-                .then(response => response.json())
-                .then(data => {
-                  // Chuyển đến view search.html và truyền dữ liệu phim và từ khóa tìm kiếm qua URL
+                  const searchText = document.getElementById('searchText').value;
                   const searchParams = new URLSearchParams();
-                  searchParams.append('keyword', searchText);
-                  searchParams.append('searchResults', JSON.stringify(data));
-                  const currentUrl = new URL('search.html', window.location.origin);
-                  currentUrl.search = searchParams.toString();
-                  window.location.href = currentUrl.href;
-                })
-                .catch(error => {
-                  console.error('Lỗi khi tìm kiếm phim:', error);
-                });
-            }
+                  searchParams.append('searchResults', searchText);
+                  
+                  window.location.href = 'search.html?' + searchParams.toString();
+                }
           </script>
         </div>
       </div>
@@ -415,13 +406,13 @@ justify-content: center;
   <!-- navbar ends -->
 
 
-  <div class=" row" style=" margin-top: 74px; margin-left: 0; margin-right: 0;">
+  <div class=" row" id="detai-movie" style=" margin-top: 74px; margin-left: 0; margin-right: 0;">
 
 
-    <div class="col-md-5 p-5 no-gutters justify-content-center">
+    <div class="col-md-5 p-5 no-gutters justify-content-center" >
         <div class="col">
             <div class="card movie_card detail_card">
-                <img src="./Images/scam.jpg" class="card-img-top" alt="...">
+                <img src="" id="img-movie" class="card-img-top" alt="Ảnh phim">
                 <div class="card-body">
                     <button class="text-uppercase btn btn-click-movie">
                         Xem phim
@@ -430,52 +421,105 @@ justify-content: center;
             </div>
         </div>
     </div>
-    <div class="col-md-7 p-5 no-gutters justify-content-center" >
-        <div class="" id="name-movie" style="font-size: 2em; color: white; font-weight: 600; padding: 4px 0;">
-            Tên Phim
+    <div class="col-md-6 p-5 no-gutters justify-content-center" style="background-color: #0000005c; border-radius: 1em;">
+        <div class="" id="name-movie" style="font-size: 2em; color: white; font-weight: 600; padding: 4px 0;">    
         </div>
-        <div class="text-detail-movie" style="display: flex; align-items: center;"> Thời lượng |
-            <div class="" id="time-movie" style="padding:  2px;">
-                1h 20 phút
+        <div class="row">
+          <div class="text-detail-movie col-md-6" style="display: flex; align-items: center;"> Thời lượng |
+            <div class="" id="time-movie" style="padding:  2px;">    
             </div>
+        </div>  
+        <div class="text-detail-movie col-md-6" id="date-movie"> 
+        </div>
+        </div>
+        <div class="row">
+          <div class="text-detail-movie col-md-6" >
+            Điểm IMBD
+              <div id="score-movie">
+              </div>
+          </div>
+          <div class="text-detail-movie col-md-6" id="view-movie">   
+          </div>
         </div>
         
-        <div class="text-detail-movie" id="date-movie">
-            10/12/2023
-        </div>
-        <div class="text-detail-movie" id="derector-movie">
-            Lương Xuân Nhất
+        <div class="text-detail-movie" id="derector-movie">   
         </div>
         <div class="row text-detail-movie">
-            <div class="" id="actor-movie">
-                Lương Xuân Nhất
+            <div class="col-md-6" id="actor-movie" style="padding: 0;">     
             </div>
-            <div class="" id="actor-img-movie">
-                Lương Xuân Nhất
+            <div class="col-md-6 actor-img-movie-css" id="actor-img-movie">     
             </div>
         </div>
+        <br/>
         <div class="text-detail-movie " style="display: block; ">
-            Phim hay
+          Nội dung phim
             <div id="content-movie" style="font-style: italic;">
-                Nội dung phim
+                
             </div>
         </div>
     </div>
   </div>
   <!-- JS Add Info -->
   <script>
-    // function displayMovieDetail() {
-    // // Lấy dữ liệu phim từ Local Storage
-    // const movieData = JSON.parse(localStorage.getItem('movieData'));
+    // Gọi hàm displaySearchResults() khi view search.html được tải
+    displaySearchResults();
 
-    // // Triển khai logic hiển thị thông tin phim trong view mới
-    // // Ví dụ: Gán giá trị thuộc tính 'tenphim' vào một phần tử HTML
-    // const movieTitleElement = document.getElementById('movie-title');
-    // movieTitleElement.textContent = movieData.tenphim;
-    // // Các xử lý khác...
-    // }
+    function displaySearchResults() {
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const searchResults = urlParams.get('searchResults');
+      
+      fetch(`http://localhost:8080/API/phims/chi-tiet/${searchResults}`)
+        .then(response => response.json())
+        .then(data => {
+          const srcImg = "http://localhost:8080/photos/phims/";
+          const movieListElement = document.getElementById('movies1');
+          
+          const movieNameElement = document.getElementById('name-movie');
+          movieNameElement.textContent = data.tenphim;
 
-    // displayMovieDetail();
+          const movieTimeElement = document.getElementById('time-movie');
+          movieTimeElement.textContent =  data.thoiluong + " phút";
+
+          const movieScoreElement = document.getElementById('score-movie');
+          movieScoreElement.textContent = " - " + data.diemIMDB + "/10";
+
+          const movieViewElement = document.getElementById('view-movie');
+          movieViewElement.textContent ="Lượt xem | " + data.luotxem;
+
+          const movieDateElement = document.getElementById('date-movie');
+          movieDateElement.textContent = "Ngày sản xuất | " + data.ngaysanxuat;
+
+          const imgElement = document.getElementById('img-movie');
+          imgElement.src = srcImg + data.idphim + "/" + data.hinhanh;
+
+          const movieContentElement = document.getElementById('content-movie');
+          movieContentElement.textContent = data.noidungphim;
+
+          //        Đạo diễn
+          const director = data.daodien;
+          const directorElement = document.getElementById('actor-movie');
+          const directorImageElement = document.getElementById('actor-img-movie');
+          // In tên đạo diễn vào thẻ
+          directorElement.textContent = "Đạo diễn : " + director.tendaodien;
+      
+          // In hình đạo diễn vào thẻ <img>
+          const directorImage = document.createElement('img');
+          directorImage.src = "http://localhost:8080/photos/daodien/" + director.iddaodien + "/" + director.hinhanhdaodien;
+          directorImage.alt = "Ảnh " + director.tendaodien;
+          directorImageElement.appendChild(directorImage);
+
+          movieListElement.appendChild(movieCard);
+
+          // Xóa tham số 'searchResults' sau khi hiển thị dữ liệu
+          urlParams.delete('searchResults');
+          const newQueryString = urlParams.toString();
+          const newUrl = window.location.pathname + (newQueryString ? '?' + newQueryString : '');
+          window.history.replaceState({}, '', newUrl);
+        });
+    }
+
+
   </script>
   <!-- JS Add Info -->
   </div>

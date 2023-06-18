@@ -223,22 +223,10 @@
           <script>
             function searchMovies() {
               const searchText = document.getElementById('searchText').value;
-
-              // Gửi yêu cầu tìm kiếm phim đến controller API
-              fetch(`http://localhost:8080/API/phims/search?keyword=${searchText}`)
-                .then(response => response.json())
-                .then(data => {
-                  // Chuyển đến view search.html và truyền dữ liệu phim và từ khóa tìm kiếm qua URL
-                  const searchParams = new URLSearchParams();
-                  searchParams.append('keyword', searchText);
-                  searchParams.append('searchResults', JSON.stringify(data));
-                  const currentUrl = new URL('search.html', window.location.origin);
-                  currentUrl.search = searchParams.toString();
-                  window.location.href = currentUrl.href;
-                })
-                .catch(error => {
-                  console.error('Lỗi khi tìm kiếm phim:', error);
-                });
+              const searchParams = new URLSearchParams();
+              searchParams.append('searchResults', searchText);
+              
+              window.location.href = 'search.html?' + searchParams.toString();
             }
           </script>
         </div>
@@ -269,56 +257,57 @@
             displaySearchResults();
 
             function displaySearchResults() {
-              const searchParams = new URLSearchParams(window.location.search);
-              const searchText = searchParams.get('keyword');
-              const searchResults = JSON.parse(searchParams.get('searchResults'));
-
-              // Gán từ khóa tìm kiếm vào thẻ có id "text-search"
-              document.getElementById('text-search').textContent = searchText;
-
-              if (searchResults && searchResults.length > 0 && searchText) {
-                const srcImg = "http://localhost:8080/photos/phims/";
-                const movieListElement = document.getElementById('movies1');
-                
-                
-                searchResults.forEach(item => {
-                  const ngaySanXuat = item.ngaysanxuat;
-                  const imgId = item.idphim + "/";
-                  const year = ngaySanXuat.substring(0, 4);
+              const queryString = window.location.search;
+              const urlParams = new URLSearchParams(queryString);
+              const searchResults = urlParams.get('searchResults');
+              document.getElementById('text-search').textContent = searchResults;
+              
+              fetch(`http://localhost:8080/API/phims/search?keyword=${searchResults}`)
+                .then(response => response.json())
+                .then(data => {
+                  const srcImg = "http://localhost:8080/photos/phims/";
+                  const movieListElement = document.getElementById('movies1');
                   
-                  const movieCard = document.createElement('div');
-                  movieCard.classList.add('col-md-3');
-                  movieCard.innerHTML = `
-                    <div class="poster">
-                      <div class="flip-card_i">
-                        <div class="flip-card-inner_i">
-                          <div class="flip-card-front_i">
-                            <img src="${srcImg+imgId+item.hinhanh}" alt="Avatar" style="width:250px;height:360px;object-fit: cover;">
+                  data.forEach(item => {
+                    const ngaySanXuat = item.ngaysanxuat;
+                    const imgId = item.idphim + "/";
+                    const year = ngaySanXuat.substring(0, 4);
+                    
+                    const movieCard = document.createElement('div');
+                    movieCard.classList.add('col-md-3');
+                    movieCard.innerHTML = `
+                      <div class="poster">
+                        <div class="flip-card_i">
+                          <div class="flip-card-inner_i">
+                            <div class="flip-card-front_i">
+                              <img src="${srcImg+imgId+item.hinhanh}" alt="Avatar" style="width:250px;height:360px;object-fit: cover;">
+                            </div>
+                            <div class="flip-card-back_i">
+                              <h5 class="p-2">${item.tenphim}</h5>
+                              <p>Thời lượng: ${item.thoiluong} phút</p>
+                              <p class="para_i text-content-movie">${item.noidungphim}</p>
+                              <br/>
+                              <button class="trailer_i" type="submit" value="" onclick="openWin('${item.trailer}')">▶ Trailer</button>
+                              <br>
+                              <br>
+                              <button class="btn_i b4_i" onclick="openMovieDetail('${item.idphim}')">▶ Xem</button>
+                            </div>
                           </div>
-                          <div class="flip-card-back_i">
-                            <h5 class="p-2">${item.tenphim}</h5>
-                            <p>Thời lượng: ${item.thoiluong} phút</p>
-                            <p class="para_i text-content-movie">${item.noidungphim}</p>
-                            <br/>
-                            <button class="trailer_i" type="submit" value="" onclick="openWin('${item.trailer}')">▶ Trailer</button>
-                            <br>
-                            <br>
-                            <button class="btn_i b4_i" onclick="openMovieDetail('${item.idphim}')">▶ Xem</button>
+                          <div class="flim">
+                            <b>${item.tenphim}</b><br>IMDB - ${item.diemIMDB}
                           </div>
-                        </div>
-                        <div class="flim">
-                          <b>${item.tenphim}</b><br>IMDB - ${item.diemIMDB}
                         </div>
                       </div>
-                    </div>
-                  `;
-                  
-                  movieListElement.appendChild(movieCard);
-                });
+                    `;
+                    
+                    movieListElement.appendChild(movieCard);
+                  });
 
-                localStorage.removeItem('searchResults');
-              }
+                  localStorage.removeItem('searchResults');
+                });
             }
+
+
 
           
             function openWin(trailerLink) {
