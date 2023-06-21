@@ -206,17 +206,70 @@
                         <a href="documentary.html" >Lịch sử</a>
                         <a href="fantasy.html" >Khoa học viễn tưởng</a>
                         <a href="comedy.html" >Phim tâm lý</a>
-                    </div>
-                    
+                  </div>
                 </div>
               </div>
               <!-- Genre dropdown ends-->
             </li>
-            <div style="position: relative; display: inline-block; padding-top: 5px; padding-left: 15px;">
-              <li>
-                <button  type="button" class="btn font-mulish btn-light" onclick="login()"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Đăng nhập</button>
-              </li>
+            <div style="position: relative; display: inline-block; padding-top: 5px; padding-left: 15px;" name="Account">
+              <script>
+                function getCookie(name) {
+                  const cookies = document.cookie.split("; ");
+                  for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].split("=");
+                    if (cookie[0] === name) {
+                      return decodeURIComponent(cookie[1]);
+                    }
+                  }
+                  return null;
+                }
+            
+                const divElement = document.querySelector('div[name="Account"]');
+                const ulElement = document.createElement('ul');
+                const bezkoderCookie = getCookie("bezkoder");
+                ulElement.innerHTML = renderLoginButton();
+            
+                divElement.appendChild(ulElement);
+                function login(){
+                  window.location.replace("login.html");
+                }
+                function logout() {
+                  const apiUrl = 'http://localhost:8080/API/auth/signout';
+
+                  fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                  })
+                    .then(response => {
+                      if (response.ok) {
+                        ulElement.innerHTML = renderLoginButton();
+                      } else {
+                        console.error('Error:', response.statusText);
+                      }
+                    })
+                    .catch(error => {
+                      console.error('Error:', error);
+                    });
+                }
+            
+                function renderLoginButton() {
+                  if (bezkoderCookie != null) {
+                    return `
+                      <li>
+                        <button type="button" class="btn font-mulish btn-light" onclick="logout()">Đăng xuất</button>
+                      </li>
+                    `;
+                  } else {
+                    return `
+                      <li>
+                        <button type="button" class="btn font-mulish btn-light" onclick="login()">Đăng nhập</button>
+                      </li>
+                    `;
+                  }
+                }
+              </script>
             </div>
+            
           </ul>
           <form id="searchForm" class="d-flex" style=" justify-content: center;">
             <input class="form-control me-2" type="text" id="searchText" placeholder="Tìm kiếm" aria-label="Search">
@@ -2800,9 +2853,9 @@
       });
     </script>
     <script>
-      function login(){
-        window.location.replace("login.html");
-      }
+      
+      //   
+      
       </script>
     <!-- bootsstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
