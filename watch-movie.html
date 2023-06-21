@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title id="title-name-page"></title>
+  <link rel="shortcut icon" href="./Design/Netflix_icon.svg.png" type="image/x-icon">
+
+  <!-- Font  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link href="./static/style.css" rel="stylesheet" type="text/css" />
+  <link href="./static/premium.css" rel="stylesheet" type="text/css" />
+  
+  <!-- fontawesome  6.0.0 -->
+<link href="./fontawesome-free-6.4.0-web/css/all.min.css" rel="stylesheet">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="static/bootstrap.min.css">
+  <link rel="stylesheet" href="static/style-min.css">
+  <link rel="stylesheet" href="cards.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light layout_navbar__1COmD" id="header-nav">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html"><img class="logo" src="./Design/LogoWebRedBlack-02.png" alt="" width="30"
+              height="24"></a>
+          <button id="nav" class="navbar-toggler" id="nav" style="background-color:#8b0000" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="background-color:dark-grey;"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 font_1em">
+              <li class="nav-item">
+                <a class="nav-link " href="movies.html" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Phim ngắn</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="web-series.html" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'" >Phim dài tập</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="kids.html"   onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Anime</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="tv.html"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">TV</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="premium.html"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Gói vip</a>
+              </li>
+        
+              <li class="nav-item">
+                <a class="nav-link" href="contactus.html"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Liên hệ</a>
+              </li>
+              <li>
+                <!-- Genre dropdown starts-->
+                <div>
+                  <div class="dropdown" style="position: relative; disPlay: inline-block; padding-top: 5px; padding-left: 15px;">
+                    <button class="btn text-white"  type="button" id="dropdownMenuButton" style="font-size:16px;margin-bottom: 6px;">
+                      Thể loại <i class="fa-solid fa-chevron-down"></i>
+                  </button>
+                  <div class="dropdown-content" style="color: white;">
+                      <a href="action.html">Hành động</a>
+                      <a href="war.html">Chiến tranh</a>
+                      <a href="drama.html">Drama</a>
+                      <a href="suspense.html">Giật gân</a>
+                      <a href="romance.html">Tình cảm</a>
+                      <a href="anime.html">Hoạt hình</a>
+                      <a href="horror.html">Kinh dị</a>
+                      <a href="documentary.html">Lịch sử</a>
+                      <a href="fantasy.html">Khoa học viễn tưởng</a>
+                      <a href="comedy.html">Phim tâm lý</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Genre dropdown ends-->
+              </li>
+              <div style="position: relative; display: inline-block; padding-top: 5px; padding-left: 15px;">
+                <li>
+                  <button  type="button" class="btn font-mulish btn-light" onclick="login()"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Đăng nhập</button>
+                </li>
+              </div>
+            </ul>
+            <form id="searchForm" class="d-flex" style=" justify-content: center;">
+              <input class="form-control me-2" type="text" id="searchText" placeholder="Tìm kiếm" aria-label="Search">
+              <button class="btn btn-danger" type="submit" onclick="searchMovies()"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <script>
+              function searchMovies() {
+                    const searchText = document.getElementById('searchText').value;
+                    const searchParams = new URLSearchParams();
+                    searchParams.append('searchResults', searchText);
+                    
+                    window.location.href = 'search.html?' + searchParams.toString();
+                  }
+            </script>
+          </div>
+        </div>
+      </nav>
+    
+    <div class="" id="name-movie" style="font-size: 4em; color: white; font-weight: 600; padding-top: 30px;text-align: center;">    
+    </div >
+      
+    <div style="position: relative;width: 640px; text-align: center;">
+    </div>
+    <div style="text-align: center;">
+      <video width="880" autoplay controls id="video-movie" name="media">
+        <source src=""  type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+</body>
+</html>
+<script>            
+    // Gọi hàm displaySearchResults() khi view search.html được tải
+    displaySearchResults();
+    
+
+    function displaySearchResults() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');
+      
+      fetch(`http://localhost:8080/API/phims/chi-tiet/${id}`)
+        .then(response => response.json())
+        .then(data => {
+          const srcVideo = "http://localhost:8080/photos/videos/";
+          const movieListElement = document.getElementById('movies1');
+
+          const movieNameElement = document.getElementById('name-movie');
+          movieNameElement.textContent = data.tenphim;
+
+          const imgElement = document.getElementById('video-movie');
+          imgElement.src = srcVideo + data.idphim + "/" + data.linkphim;
+
+          videoElement.addEventListener('loadeddata', function() {
+          videoElement.play();
+          });
+          // Xóa tham số 'searchResults' sau khi hiển thị dữ liệu
+          urlParams.delete('searchResults');
+          const newQueryString = urlParams.toString();
+          const newUrl = window.location.pathname + (newQueryString ? '?' + newQueryString : '');
+          window.history.replaceState({}, '', newUrl);
+        });
+    }
+</script>

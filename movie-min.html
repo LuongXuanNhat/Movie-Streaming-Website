@@ -414,9 +414,22 @@ justify-content: center;
             <div class="card movie_card detail_card">
                 <img src="" id="img-movie" class="card-img-top" alt="Ảnh phim">
                 <div class="card-body">
-                    <button class="text-uppercase btn btn-click-movie">
-                        Xem phim
-                    </button>
+                  <button class="text-uppercase btn btn-click-movie" id="xemphim">
+                    Xem phim
+                  </button>
+          
+                  <script>
+                    let movieId = null;
+          
+                    function redirectToWatchMovie() {
+                      if (movieId) {
+                        window.location.href = `watch-movie.html?id=${movieId}`;
+                      }
+                    }
+          
+                    const xemPhimButton = document.getElementById('xemphim');
+                    xemPhimButton.addEventListener('click', redirectToWatchMovie);
+                  </script>
                 </div>
             </div>
         </div>
@@ -478,6 +491,8 @@ justify-content: center;
           const movieNameElement = document.getElementById('name-movie');
           movieNameElement.textContent = data.tenphim;
 
+          
+
           const movieTimeElement = document.getElementById('time-movie');
           movieTimeElement.textContent =  data.thoiluong + " phút";
 
@@ -505,11 +520,18 @@ justify-content: center;
       
           // In hình đạo diễn vào thẻ <img>
           const directorImage = document.createElement('img');
-          directorImage.src = "http://localhost:8080/photos/daodien/" + director.iddaodien + "/" + director.hinhanhdaodien;
+          directorImage.src = "http://localhost:8080/photos/daodiens/" + director.iddaodien + "/" + director.hinhanhdaodien;
           directorImage.alt = "Ảnh " + director.tendaodien;
           directorImageElement.appendChild(directorImage);
 
+          xemPhimButton.addEventListener('click', function() {
+          movieId = data.idphim;
+          });
+
           movieListElement.appendChild(movieCard);
+
+          
+
 
           // Xóa tham số 'searchResults' sau khi hiển thị dữ liệu
           urlParams.delete('searchResults');
@@ -517,6 +539,8 @@ justify-content: center;
           const newUrl = window.location.pathname + (newQueryString ? '?' + newQueryString : '');
           window.history.replaceState({}, '', newUrl);
         });
+
+
     }
 
 

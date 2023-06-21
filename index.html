@@ -213,36 +213,27 @@
             </li>
             <div style="position: relative; display: inline-block; padding-top: 5px; padding-left: 15px;" name="Account">
               <script>
-                function getCookie(name) {
-                  const cookies = document.cookie.split("; ");
-                  for (let i = 0; i < cookies.length; i++) {
-                    const cookie = cookies[i].split("=");
-                    if (cookie[0] === name) {
-                      return decodeURIComponent(cookie[1]);
-                    }
-                  }
-                  return null;
-                }
+                
             
                 const divElement = document.querySelector('div[name="Account"]');
                 const ulElement = document.createElement('ul');
-                const bezkoderCookie = getCookie("bezkoder");
                 ulElement.innerHTML = renderLoginButton();
             
                 divElement.appendChild(ulElement);
                 function login(){
                   window.location.replace("login.html");
                 }
+
                 function logout() {
                   const apiUrl = 'http://localhost:8080/API/auth/signout';
-
                   fetch(apiUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' }
                   })
                     .then(response => {
                       if (response.ok) {
-                        ulElement.innerHTML = renderLoginButton();
+                        localStorage.removeItem('username');
+                        window.location.reload(true);
                       } else {
                         console.error('Error:', response.statusText);
                       }
@@ -253,10 +244,14 @@
                 }
             
                 function renderLoginButton() {
-                  if (bezkoderCookie != null) {
+                  const username = localStorage.getItem('username');
+                  if (username != null) {
                     return `
                       <li>
                         <button type="button" class="btn font-mulish btn-light" onclick="logout()">Đăng xuất</button>
+                      </li>
+                      <li>
+                        <button type="text" class="btn font-mulish btn-light" >Chào ${username}</button>
                       </li>
                     `;
                   } else {
