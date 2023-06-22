@@ -214,9 +214,12 @@
             <div style="position: relative; display: inline-block; padding-top: 5px; padding-left: 15px;" name="Account">
               <script>
                 
-            
                 const divElement = document.querySelector('div[name="Account"]');
                 const ulElement = document.createElement('ul');
+
+                ulElement.style.display = 'flex';
+                ulElement.style.listStyle = 'none';
+
                 ulElement.innerHTML = renderLoginButton();
             
                 divElement.appendChild(ulElement);
@@ -250,7 +253,7 @@
                       <li>
                         <button type="button" class="btn font-mulish btn-light" onclick="logout()">Đăng xuất</button>
                       </li>
-                      <li>
+                      <li style="margin-left: 8px;">
                         <button type="text" class="btn font-mulish btn-light" >Chào ${username}</button>
                       </li>
                     `;
@@ -595,7 +598,7 @@
       
      
 <hr>
-<div class="container" id="Movies">
+<!-- <div class="container" id="Movies">
         <div class="title-nav online">Phim lẻ</div>
          <div class="poster">
           <div class="flip-card_i">
@@ -1093,10 +1096,10 @@
         </div> 
 
 
-    </div>
+    </div> -->
     <!---next block -->
 
-    <hr>
+    <!-- <hr>
     <div class="container" id="WebSeries">
       <div class="title-nav online">Phim chiếu rạp</div>
         <div class="poster">
@@ -1641,10 +1644,10 @@
           </div>
         </div>
 
-    </div>
+    </div> -->
     <!---third block -->
 
-    <div class="container" id="WebSeries">
+    <!-- <div class="container" id="WebSeries">
        <div class="title-nav online">Phim tình cảm - tâm lý</div>
       <div class="poster">
           <div class="flip-card_i">
@@ -2201,7 +2204,7 @@
         </div>
       </div>
 
-  </div>
+  </div> -->
   <!---third block -->
 
   
@@ -2214,7 +2217,7 @@
        
 
 
-      <h2 class="title-nav online">Dành cho bé</h2>
+      <!-- <h2 class="title-nav online">Dành cho bé</h2>
       <div class="container" id="Kids">
 
         <div class="poster">
@@ -2745,7 +2748,7 @@
           </div>
         </div> footer-logoscroll-bar
       </div> 
-    <div id="waterdrop"></div>
+    <div id="waterdrop"></div> -->
 
     <!-------------------------------Footer-------------------------------->
     <footer class="footer">

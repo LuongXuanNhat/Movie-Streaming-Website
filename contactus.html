@@ -244,10 +244,61 @@
               </div>
               <!-- Genre dropdown ends-->
             </li>
-            <div style="position: relative; display: inline-block; padding-top: 5px; padding-left: 15px;">
-              <li>
-                <button  type="button" class="btn font-mulish btn-light" onclick="login()"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">Đăng nhập</button>
-              </li>
+            <div style="position: relative; display: inline-block; padding-top: 5px; padding-left: 15px;" name="Account">
+              <script>
+                
+                const divElement = document.querySelector('div[name="Account"]');
+                const ulElement = document.createElement('ul');
+
+                ulElement.style.display = 'flex';
+                ulElement.style.listStyle = 'none';
+
+                ulElement.innerHTML = renderLoginButton();
+            
+                divElement.appendChild(ulElement);
+                function login(){
+                  window.location.replace("login.html");
+                }
+
+                function logout() {
+                  const apiUrl = 'http://localhost:8080/API/auth/signout';
+                  fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                  })
+                    .then(response => {
+                      if (response.ok) {
+                        localStorage.removeItem('username');
+                        window.location.reload(true);
+                      } else {
+                        console.error('Error:', response.statusText);
+                      }
+                    })
+                    .catch(error => {
+                      console.error('Error:', error);
+                    });
+                }
+            
+                function renderLoginButton() {
+                  const username = localStorage.getItem('username');
+                  if (username != null) {
+                    return `
+                      <li>
+                        <button type="button" class="btn font-mulish btn-light" onclick="logout()">Đăng xuất</button>
+                      </li>
+                      <li style="margin-left: 8px;">
+                        <button type="text" class="btn font-mulish btn-light" >Chào ${username}</button>
+                      </li>
+                    `;
+                  } else {
+                    return `
+                      <li>
+                        <button type="button" class="btn font-mulish btn-light" onclick="login()">Đăng nhập</button>
+                      </li>
+                    `;
+                  }
+                }
+              </script>
             </div>
           </ul>
           <form id="searchForm" class="d-flex" style=" justify-content: center;">

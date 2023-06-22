@@ -64,17 +64,24 @@
               // console.log(jwtCookie);
               // return response.json();
              // })
-             .then(responseData => {
-              localStorage.setItem('username', responseData.username);
-              swal({
-                title: "Chào mừng bạn quay trở lại!",
-                text:  "Phim Hay Vai đã cập nhật những bộ phim hay và mới nhất",
-                type: "success",
-              });
-              
-              setTimeout(function () {
-                document.location.href = "index.html";
-              }, 1500);
+              .then(response => response.json())
+              .then(responseData => {
+              console.log(responseData);
+              const username = responseData.username; 
+              if (username) {
+                localStorage.setItem('username', username);
+                swal({
+                  title: "Chào mừng bạn quay trở lại!",
+                  text: "Phim Hay Vai đã cập nhật những bộ phim hay và mới nhất",
+                  type: "success",
+                });
+
+                setTimeout(function () {
+                  document.location.href = "index.html";
+                }, 1500);
+              } else {
+                console.error('Response data does not contain a username.');
+              }
             })
             .catch(error => {
               console.error('Error:', error);
