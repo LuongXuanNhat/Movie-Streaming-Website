@@ -132,6 +132,10 @@
 #header-nav .nav-link a:hover{
   color: red;
 }
+.current-page {
+  background-color: #ce1818;
+  color: white;
+}
 </style>
 <script>
   setTimeout(function () {
@@ -529,72 +533,144 @@
     <div class="maincontainer">
       <hr>
       <div class="container">
-          <div id="movies1" class="row">
-            <div class="title-nav online">Phim đề cử</div>
-          </div>
-          <script>
-            fetch('http://localhost:8080/API/phims')
-              .then(response => response.json())
-              .then(data => {
-                const dataList = document.getElementById('movies1');
-                const srcImg = "http://localhost:8080/photos/phims/";
-                
-                data.forEach(item => {
-                  const ngaySanXuat = item.ngaysanxuat;
-                  const imgId = item.idphim + "/";
-                  const year = ngaySanXuat.substring(0, 4);
-                  const movieCard = document.createElement('div');
-                  movieCard.classList.add('col-md-3');
-                  movieCard.innerHTML = `
-                    <div class="poster">
-                      <div class="flip-card_i">
-                        <div class="flip-card-inner_i">
-                          <div class="flip-card-front_i">
-                            <img src="${srcImg+imgId+item.hinhanh}" alt="Avatar" style="width:250px;height:360px;object-fit: cover;">
-                          </div>
-                          <div class="flip-card-back_i">
-                            <h5 class="p-2">${item.tenphim}</h5>
-                            <p>Thời lượng: ${item.thoiluong} phút</p>
-                            <p class="para_i text-content-movie">${item.noidungphim}</p>
-                            <br/>
-                            <button class="trailer_i" type="submit" value="" onclick="openWin('${item.trailer}')">▶ Trailer</button>
-                            <br>
-                            <br>
-                            <button class="btn_i b4_i" onclick="openMovieDetail('${item.idphim}')">▶ Xem</button>
-                          </div>
+        <div id="movies1" class="row">
+          <div class="title-nav online">Phim đề cử</div>
+        </div>
+      </div>
+    
+      <div id="pagination"></div>
+    
+      <script>
+        function fetchData(page) {
+          const url = `http://localhost:8080/API/phims/page/${page}`;
+    
+          fetch(url)
+            .then(response => response.json())
+            .then(data => {
+              const content = data.content;
+              const totalPages = data.totalPages;
+              
+              const dataList = document.getElementById('movies1');
+              const srcImg = "http://localhost:8080/photos/phims/";
+    
+              dataList.innerHTML = '';
+    
+              content.forEach(item => {
+                const ngaySanXuat = item.ngaysanxuat;
+                const imgId = item.idphim + "/";
+                const year = ngaySanXuat.substring(0, 4);
+                const movieCard = document.createElement('div');
+                movieCard.classList.add('col-md-3');
+                movieCard.innerHTML = `
+                  <div class="poster">
+                    <div class="flip-card_i">
+                      <div class="flip-card-inner_i">
+                        <div class="flip-card-front_i">
+                          <img src="${srcImg+imgId+item.hinhanh}" alt="Avatar" style="width:250px;height:360px;object-fit: cover;">
                         </div>
-                        <div class="flim">
-                          <b>${item.tenphim}</b><br>IMDB - ${item.diemIMDB}
+                        <div class="flip-card-back_i">
+                          <h5 class="p-2">${item.tenphim}</h5>
+                          <p>Thời lượng: ${item.thoiluong} phút</p>
+                          <p class="para_i text-content-movie">${item.noidungphim}</p>
+                          <br/>
+                          <button class="trailer_i" type="submit" value="" onclick="openWin('${item.trailer}')">▶ Trailer</button>
+                          <br>
+                          <br>
+                          <button class="btn_i b4_i" onclick="openMovieDetail('${item.idphim}')">▶ Xem</button>
                         </div>
                       </div>
+                      <div class="flim">
+                        <b>${item.tenphim}</b><br>IMDB - ${item.diemIMDB}
+                      </div>
                     </div>
-                  `;
-                  
-                  dataList.appendChild(movieCard);
-                });
-              })
-              .catch(error => {
-                console.error('Lỗi khi lấy dữ liệu:', error);
-              });
-          
-            function openWin(trailerLink) {
-              window.open(trailerLink, "_blank", "top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-            }
-          
-            function openMovieDetail(idphim) {
-              const searchParams = new URLSearchParams();
-              searchParams.append('searchResults', idphim);
-              window.location.href = 'movie-min.html?' + searchParams.toString();
-            }
-            function navigateToMovieDetail(movieData) {
-              // Chuyển đến view mới
-              window.location.href = 'path/to/movie-detail-view.html';
+                  </div>
+                `;
+    
 
-              // Lưu dữ liệu phim vào Local Storage để sử dụng trong view mới
-              localStorage.setItem('movieData', JSON.stringify(movieData));
+                dataList.appendChild(movieCard);
+              });
+              updatePagination(totalPages);
+            })
+            .catch(error => {
+              console.error('Lỗi khi lấy dữ liệu:', error);
+            });
+        }
+        function updatePagination(totalPages) {
+          const paginationElement = document.getElementById('pagination');
+
+          // Thêm style cho thẻ pagination
+          paginationElement.style.display = 'flex';
+          paginationElement.style.justifyContent = 'center';
+
+          paginationElement.innerHTML = '';
+
+          for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.innerText = i;
+            pageButton.style.padding = '4px 8px'; 
+            pageButton.style.borderRadius = '4px'; 
+
+            // Tô màu trang hiện tại
+            if (i === currentPage) {
+              pageButton.classList.add('current-page'); // Thêm lớp CSS cho trang hiện tại
             }
-          </script>
-      </div>
+
+            pageButton.addEventListener('click', function() {
+              goToPage(i);
+            });
+            paginationElement.appendChild(pageButton);
+          }
+        }
+        function openWin(trailerLink) {
+          window.open(trailerLink, "_blank", "top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+        }
+    
+        function openMovieDetail(idphim) {
+          const searchParams = new URLSearchParams();
+          searchParams.append('searchResults', idphim);
+          window.location.href = 'movie-min.html?' + searchParams.toString();
+        }
+    
+        function navigateToMovieDetail(movieData) {
+          // Chuyển đến view mới
+          window.location.href = 'path/to/movie-detail-view.html';
+    
+          // Lưu dữ liệu phim vào Local Storage để sử dụng trong view mới
+          localStorage.setItem('movieData', JSON.stringify(movieData));
+        }
+    
+        const paginationElement = document.getElementById('pagination');
+    
+        let currentPage = 1;
+        const totalItems = 20;
+        const itemsPerPage = 10;
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+    
+        // Tạo các nút phân trang
+        for (let i = 1; i <= totalPages; i++) {
+          const pageButton = document.createElement('button');
+          pageButton.innerText = i;
+          pageButton.addEventListener('click', function() {
+            // Xử lý sự kiện khi nút phân trang được nhấp
+            goToPage(i);
+          });
+          paginationElement.appendChild(pageButton);
+        }
+    
+        // Hàm xử lý khi chuyển đến trang mới
+        function goToPage(page) {
+          // Cập nhật trạng thái trang hiện tại
+          currentPage = page;
+    
+          // Lấy dữ liệu mới hoặc cập nhật giao diện
+          fetchData(page);
+        }
+    
+        // Load dữ liệu cho trang hiện tại
+        fetchData(currentPage);
+      </script>
+    </div>
+    
       
      
 <hr>
